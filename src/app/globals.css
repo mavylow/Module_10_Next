@@ -79,3 +79,15 @@ main {
 a {
   color: var(--text-color);
 }
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

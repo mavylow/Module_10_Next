@@ -10,9 +10,7 @@ import type { IForm } from "@/interfaces";
 import * as Yup from "yup";
 import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
 import ThumbUpIcon from "@/assets/ThumbUpIcon";
-// import { NavLink, useNavigate } from "react-router";
 import Link from "next/link";
-
 import CheckIcon from "@/assets/CheckIcon";
 import CrossIcon from "@/assets/CrossIcon";
 import EyeCrossedIcon from "@/assets/EyeCrossedIcon";

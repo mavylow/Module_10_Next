@@ -1,6 +1,7 @@
-import "./style.css";
-import ProfileInfo from "@/components/ProfileInfo";
-import Statistics from "@/components/Statistics";
+"use client";
+import "@pages/profile/style.css";
+import ProfileInfo from "@components/ProfileInfo";
+import Statistics from "@components/Statistics";
 import { useProfilePage } from "@/store/profileStore";
 import { useTranslation } from "react-i18next";
 

@@ -1,3 +1,5 @@
+"use client";
+import "@components/InputMessage/style.css";
 import type { ComponentType } from "react";
 import "./style.css";
 

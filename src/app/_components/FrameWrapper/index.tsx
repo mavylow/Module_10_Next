@@ -1,3 +1,4 @@
+"use client";
 import type { ReactNode } from "react";
 import { Frame } from "./index.styled";
 

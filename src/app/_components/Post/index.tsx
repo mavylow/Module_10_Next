@@ -1,12 +1,12 @@
 "use client";
 import { useState, type ChangeEvent } from "react";
 import DOMPurify from "dompurify";
-import CommentIcon from "@/assets/CommentIcon";
-import ChevronIcon from "@/assets/ChevronIcon";
+import CommentIcon from "@assets/CommentIcon";
+import ChevronIcon from "@assets/ChevronIcon";
 // import Comment from "@/components/Comment";
-import EditPenIcon from "@/assets/EditPenIcon";
-import Input from "@/components/Input";
-import Button from "@/components/Button";
+import EditPenIcon from "@assets/EditPenIcon";
+import Input from "@components/Input";
+import Button from "@components/Button";
 
 import type { IUser, IComment, IPost } from "@/interfaces";
 import { formattedDate } from "@/utils/dateFormatter";
@@ -19,9 +19,9 @@ import {
   loadPostComments,
   loadUser,
 } from "@/utils/apiUtil";
-import ChevronIconExpanded from "@/assets/ChevronIconExpanded";
-import HeartLikeIcon from "@/assets/HeartLikeIcon";
-import HeartDislikeIcon from "@/assets/HeartDislikeIcon";
+import ChevronIconExpanded from "@assets/ChevronIconExpanded";
+import HeartLikeIcon from "@assets/HeartLikeIcon";
+import HeartDislikeIcon from "@assets/HeartDislikeIcon";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import {
@@ -33,7 +33,7 @@ import {
 import { Box, Skeleton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-import FrameWrapper from "@/components/FrameWrapper";
+import FrameWrapper from "@components/FrameWrapper";
 import {
   AddComment,
   Comments,

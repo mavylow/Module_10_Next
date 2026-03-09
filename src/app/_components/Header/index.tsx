@@ -1,10 +1,9 @@
 "use client";
-import SidekickLogoText from "@/assets/SidekickLogoText";
-import SidekickLogo from "@/assets/SidekickLogo";
-import "./style.css";
+import "@components/Header/style.css";
+import SidekickLogoText from "@assets/SidekickLogoText";
+import SidekickLogo from "@assets/SidekickLogo";
 import { useEffect, useState } from "react";
-import Hamburger from "@/assets/HamburgerMenuIcon";
-import { NavLink, useLocation, useNavigate } from "react-router";
+import Hamburger from "@assets/HamburgerMenuIcon";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store";

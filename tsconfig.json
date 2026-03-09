@@ -16,9 +16,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/app/_components/*"],
-      "@/assets/*": ["src/app/_assets/*"],
-      "@/utils/*": ["src/utils/*"]
+      "@app*": ["src/app/*"],
+      "@components/*": ["src/app/_components/*"],
+      "@assets/*": ["src/app/_assets/*"],
+      "@utils/*": ["src/utils/*"],
+      "@store/*": ["src/store/*"],
+      "@slices/*": ["src/slices/*"],
+      "@providers/*": ["src/providers/*"],
+      "@auth/*": ["src/app/(pages)/(auth)/*"],
+      "@pages/*": ["src/app/(pages)/*"]
+
     },
     "plugins": [
       {
@@ -33,6 +40,6 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/page.js"  ],
+, "src/app/page.js", "src/app/_components/ClientsInit"  ],
   "exclude": ["node_modules"]
 }

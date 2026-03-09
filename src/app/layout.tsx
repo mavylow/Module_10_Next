@@ -1,8 +1,9 @@
-import "./globals.css";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import "@app/globals.css";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
 import { createGlobalStyle } from "styled-components";
-import ClientsInit from "./_components/ClientsInit.tsx";
+import ClientsInit from "@components/ClientsInit";
+import ContextProvider from "@providers/ContextProvider";
 
 const Global = createGlobalStyle`
 * {
@@ -40,12 +41,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body>
         <ClientsInit>
-          <div id="root">
-            <Global />
-            <Header />
-            {children}
-            <Footer />
-          </div>
+          <ContextProvider>
+            <div id="root">
+              <Global />
+              <Header />
+              {children}
+              <Footer />
+            </div>
+          </ContextProvider>
         </ClientsInit>
         <div id="modal"></div>
       </body>

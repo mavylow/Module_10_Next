@@ -1,6 +1,8 @@
-import FrameWrapper from "@/components/FrameWrapper";
-//import { SidebarElement } from "@components/SidebarElement";
-import "./style.css";
+"use client";
+
+import "@components/Sidebar/style.css";
+import FrameWrapper from "@components/FrameWrapper";
+import { SidebarElement } from "@components/SidebarElement";
 import { getGroups, getSuggested } from "@/utils/apiUtil";
 import type { IGroup, ISidebarUser } from "@/interfaces";
 import { useQuery } from "@tanstack/react-query";
@@ -26,20 +28,10 @@ export default function Sidebar() {
             ? [1, 2, 3].map((index) => <SidebarSkeleton key={index} />)
             : suggestedUser
                 ?.slice(0, 5)
-                .map((user) => <div key={user.id}> {user.firstName}</div>)}
+                .map((user) => <SidebarElement key={user.id} element={user} />)}
         </section>
       </FrameWrapper>
       <FrameWrapper>
-        {/* <section className="suggested-communities">
-          <h3>Communities you might like</h3>
-          {isGroupsLoading
-            ? [1, 2, 3, 4].map((index) => <SidebarSkeleton key={index} />)
-            : groups
-                ?.slice(0, 4)
-                .map((community) => (
-                  <SidebarElement key={community.id} element={community} />
-                ))}
-        </section> */}
         <section className="suggested-communities">
           <h3>Communities you might like</h3>
           {isGroupsLoading
@@ -47,7 +39,7 @@ export default function Sidebar() {
             : groups
                 ?.slice(0, 4)
                 .map((community) => (
-                  <div key={community.id}> {community.title}</div>
+                  <SidebarElement key={community.id} element={community} />
                 ))}
         </section>
       </FrameWrapper>

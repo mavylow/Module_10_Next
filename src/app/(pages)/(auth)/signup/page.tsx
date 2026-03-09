@@ -1,24 +1,27 @@
 "use client";
+
+import "@auth/style.css";
 import { useEffect, useState } from "react";
-import MailIcon from "@/assets/MailIcon";
-import EyeOpenIcon from "@/assets/EyeOpenIcon";
-import EyeCrossedIcon from "@/assets/EyeCrossedIcon";
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import "../style.css";
+import MailIcon from "@assets/MailIcon";
+import EyeOpenIcon from "@assets/EyeOpenIcon";
+import EyeCrossedIcon from "@assets/EyeCrossedIcon";
+import Button from "@components/Button";
+import Input from "@components/Input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
-import ThumbUpIcon from "@/assets/ThumbUpIcon";
+import ErrorWarningIcon from "@assets/ErrorWarningIcon";
+import ThumbUpIcon from "@assets/ThumbUpIcon";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router";
-import CrossIcon from "@/assets/CrossIcon";
-import CheckIcon from "@/assets/CheckIcon";
+import CrossIcon from "@assets/CrossIcon";
+import CheckIcon from "@assets/CheckIcon";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store";
 import { signUp } from "@/slices/authSlice";
-import InputMessage from "@/components/InputMessage";
+import InputMessage from "@components/InputMessage";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function SignUp() {
   const { t } = useTranslation();
@@ -51,7 +54,7 @@ function SignUp() {
   const [isPasswordOpen, setIsPasswordOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector<RootState>((state) => state.auth.isAuth);
-  const navigate = useNavigate();
+  const navigate = useRouter();
   const showEmailValidation = touchedFields.email || submitCount > 0;
 
   const showPasswordValidation = touchedFields.password || submitCount > 0;
@@ -62,7 +65,7 @@ function SignUp() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate("/");
+      navigate.replace("/");
     }
   }, [isAuth]);
 
@@ -157,9 +160,9 @@ function SignUp() {
 
       <span>
         {t("alreadyHaveAccount")}{" "}
-        <NavLink to={"/signin"} className="nav-link">
+        <Link href={"/signin"} className="nav-link">
           {t("signIn")}
-        </NavLink>
+        </Link>
       </span>
     </main>
   );

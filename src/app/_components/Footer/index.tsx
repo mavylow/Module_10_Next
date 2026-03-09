@@ -1,4 +1,5 @@
-import "./style.css";
+"use client";
+import "@components/Footer/style.css";
 
 function Footer() {
   return (

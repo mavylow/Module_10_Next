@@ -1,3 +1,5 @@
+"use client";
+
 import type { TProfilePages } from "@/interfaces";
 import { createContext } from "react";
 import { create } from "zustand";

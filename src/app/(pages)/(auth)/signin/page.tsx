@@ -1,23 +1,24 @@
 "use client";
+
+import "@auth/style.css";
 import { useEffect, useState } from "react";
-import MailIcon from "@/assets/MailIcon";
-import EyeOpenIcon from "@/assets/EyeOpenIcon";
-import Button from "@/components/Button";
-import Input from "@/components/Input";
-import "../style.css";
+import MailIcon from "@assets/MailIcon";
+import EyeOpenIcon from "@assets/EyeOpenIcon";
+import Button from "@components/Button";
+import Input from "@components/Input";
 import { useFormik } from "formik";
 import type { IForm } from "@/interfaces";
 import * as Yup from "yup";
-import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
-import ThumbUpIcon from "@/assets/ThumbUpIcon";
+import ErrorWarningIcon from "@assets/ErrorWarningIcon";
+import ThumbUpIcon from "@assets/ThumbUpIcon";
 import Link from "next/link";
-import CheckIcon from "@/assets/CheckIcon";
-import CrossIcon from "@/assets/CrossIcon";
-import EyeCrossedIcon from "@/assets/EyeCrossedIcon";
+import CheckIcon from "@assets/CheckIcon";
+import CrossIcon from "@assets/CrossIcon";
+import EyeCrossedIcon from "@assets/EyeCrossedIcon";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "@/store";
 import { signIn } from "@/slices/authSlice";
-import InputMessage from "@/components/InputMessage";
+import InputMessage from "@components/InputMessage";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/navigation";
 

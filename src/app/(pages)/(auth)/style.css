@@ -1,0 +1,95 @@
+.sing-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(375px, 90%);
+  gap: 24px;
+  font-size: 14px;
+  padding: 0 24px 24px 24px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-header h1 {
+  font-size: 18px;
+  height: 28px;
+}
+
+.form-header p {
+  width: 80%;
+  text-align: center;
+}
+
+form input {
+  height: 48px;
+  width: min(327px, 90vw);
+}
+
+form button {
+  height: 44px;
+  width: min(327px, 90vw);
+}
+
+.legal-link,
+.nav-link {
+  color: var(--text-color);
+}
+
+.legal-disclaimer {
+  font-size: 12px;
+  text-align: center;
+  color: var(--light-text-color);
+}
+
+.legal-link {
+  text-decoration: none;
+}
+
+.sing-up + span {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media (max-width: 376px) {
+  .sing-up {
+    gap: 0.8em;
+  }
+
+  .sing-up button {
+    height: 36px;
+  }
+}
+
+.email-warning {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.error .svg-x {
+  height: 16px;
+  width: 16px;
+}
+.error .svg-x path {
+  fill: var(--primary-red);
+}
+.password-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+}

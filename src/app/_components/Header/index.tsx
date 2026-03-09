@@ -3,11 +3,23 @@ import SidekickLogoText from "@/assets/SidekickLogoText";
 import SidekickLogo from "@/assets/SidekickLogo";
 import "./style.css";
 import { useEffect, useState } from "react";
+import Hamburger from "@/assets/HamburgerMenuIcon";
+import { NavLink, useLocation, useNavigate } from "react-router";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import { type RootState } from "@/store";
+import { useProfilePage } from "@/store/profileStore";
+import { usePathname, useRouter } from "next/navigation";
 
 function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isPageAuth, setIsPageAuth] = useState(false);
+  const [isPageAuth, setIsPageAuth] = useState(true);
+  const location = usePathname();
+  const navigate = useRouter();
+
+  const user = useSelector((state: RootState) => state.auth.user);
+  const { changePage } = useProfilePage((state) => state);
 
   useEffect(() => {
     handleResize();
@@ -19,7 +31,7 @@ function Header() {
 
   useEffect(() => {
     setIsExpanded(false);
-    if (location.pathname !== "/signin" && location.pathname !== "/signup") {
+    if (location !== "/signin" && location !== "/signup") {
       setIsPageAuth(true);
     } else {
       setIsPageAuth(false);
@@ -47,6 +59,15 @@ function Header() {
     };
   }, [isExpanded]);
 
+  const handleChangeMenuExpanded = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const handleNavigate = (url: string) => {
+    console.log(navigate);
+    navigate.replace(url);
+  };
+
   return (
     <>
       <header
@@ -59,11 +80,88 @@ function Header() {
         }
         data-testid="header"
       >
-        <div className="logo" onClick={() => console.log("/")}>
+        <div className="logo" onClick={() => handleNavigate("/")}>
           <SidekickLogo />
           <SidekickLogoText />
         </div>
+        {isPageAuth && (
+          <>
+            {user ? (
+              <nav
+                className={
+                  isMobile && isExpanded ? "mobile-nav" : "desktop-nav"
+                }
+              >
+                {isExpanded ? (
+                  <>
+                    <Link
+                      data-testid="profile-info"
+                      href={"/profile"}
+                      onClick={() => changePage("info")}
+                    >
+                      Profile info
+                    </Link>
+                    <Link
+                      data-testid="statistics"
+                      href={"/profile"}
+                      onClick={() => changePage("statistics")}
+                    >
+                      Statistics
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href={"/profile"}>
+                      <img
+                        src={user.profileImage}
+                        className="avatar"
+                        alt="profile-image"
+                      />
+                    </Link>
+                    <Link href={"/profile"}>
+                      {user.firstName} {user.secondName}
+                    </Link>
+                  </>
+                )}
+              </nav>
+            ) : (
+              <nav
+                className={
+                  isMobile && isExpanded ? "mobile-nav" : "desktop-nav"
+                }
+              >
+                <Link href={"/signin"}>Sing In</Link>
+                <Link href={"/signup"}>Sing Up</Link>
+              </nav>
+            )}
+          </>
+        )}
+        {isPageAuth && (
+          <button
+            className="hamburger-menu"
+            onClick={handleChangeMenuExpanded}
+            aria-label="hamburger menu button"
+          >
+            {user && isExpanded ? (
+              <img
+                key={user?.profileImage}
+                src={user?.profileImage || "/image/default-avatar.webp"}
+                className="avatar"
+                alt="Hide menu profile image"
+              />
+            ) : (
+              <Hamburger />
+            )}
+          </button>
+        )}
       </header>
+      {isMobile && isExpanded && (
+        <div
+          className="overlay"
+          data-testid="overlay"
+          onClick={handleChangeMenuExpanded}
+        ></div>
+      )}
     </>
   );
 }

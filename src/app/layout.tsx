@@ -48,7 +48,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </ClientsInit>
         <div id="modal"></div>
-        <script type="module" src="/src/main.tsx"></script>
       </body>
     </html>
   );

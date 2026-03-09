@@ -3,11 +3,10 @@ import { useState, type ChangeEvent } from "react";
 import DOMPurify from "dompurify";
 import CommentIcon from "@assets/CommentIcon";
 import ChevronIcon from "@assets/ChevronIcon";
-// import Comment from "@/components/Comment";
+import Comment from "@components/Comment";
 import EditPenIcon from "@assets/EditPenIcon";
 import Input from "@components/Input";
 import Button from "@components/Button";
-
 import type { IUser, IComment, IPost } from "@/interfaces";
 import { formattedDate } from "@/utils/dateFormatter";
 import React from "react";
@@ -213,13 +212,12 @@ function Post({ post, onLike }: PostProps) {
               <CommentsSkeleton />
             ) : (
               comments.map((comment, i) => (
-                // <Comment
-                //   key={comment.id}
-                //   number={i + 1}
-                //   comment={comment}
-                //   onDelete={() => handleDeleteComment(comment.id)}
-                // />
-                <div key={comment.id}>{comment.text}</div>
+                <Comment
+                  key={comment.id}
+                  number={i + 1}
+                  comment={comment}
+                  onDelete={() => handleDeleteComment(comment.id)}
+                />
               ))
             )}
           </PostComments>

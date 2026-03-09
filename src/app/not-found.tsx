@@ -1,4 +1,4 @@
-import PageNotFoundIcon from "./_assets/PageNotFoundIcon";
+import PageNotFoundIcon from "@assets/PageNotFoundIcon";
 
 function NotFoundPage() {
   return (

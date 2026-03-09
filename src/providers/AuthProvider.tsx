@@ -1,7 +1,6 @@
 "use client";
 import { createContext, useEffect, type ReactNode } from "react";
 import { type IProfileForm, type IUser } from "@/interfaces";
-import { useLocation, useNavigate } from "react-router";
 import { updateUserAxios } from "@utils/apiUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { type AppDispatch, type RootState } from "@/store";

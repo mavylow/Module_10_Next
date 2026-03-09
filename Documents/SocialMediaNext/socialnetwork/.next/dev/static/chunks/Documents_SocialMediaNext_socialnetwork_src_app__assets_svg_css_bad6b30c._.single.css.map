@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Documents/SocialMediaNext/socialnetwork/src/app/_assets/svg.css"],"sourcesContent":[".svg-x path,\n.svg-notfound path,\n.svg-pen path,\n.svg-sidekick path,\n.svg-eye path,\n.svg-eye-closed path,\n.svg-expand path,\n.svg-email path,\n.svg-hamburger path,\n.svg-person path,\n.svg-trash path,\n.svg-upload-file path {\n  fill: var(--svg-color);\n}\n\n.svg-comment path {\n  stroke: var(--svg-color);\n}\n\n.svg-heart-liked path {\n  fill: var(--svg-color);\n  stroke: none;\n}\n.svg-heart-disliked path {\n  fill: none;\n  stroke: var(--svg-color);\n}\n"],"names":[],"mappings":"AAAA;;;;AAeA;;;;AAIA;;;;;AAIA"}}]
+}

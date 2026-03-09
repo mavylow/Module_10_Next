@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Documents/SocialMediaNext/socialnetwork/src/app/_components/Footer/style.css"],"sourcesContent":["footer {\n  width: 100%;\n  background-color: var(--background-main);\n  height: 68px;\n  margin-top: auto;\n  text-align: center;\n  color: var(--primary-orange);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5em;\n}\n\nfooter p {\n  width: fit-content;\n  font-size: clamp(14px, 1.5vw, 18px);\n}\n\n@media (max-width: 376px) {\n  footer {\n    height: 56px;\n  }\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;AAaA;;;;;AAKA;EACE"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/sofiamaiseenko/Documents/SocialMediaNext/socialnetwork/node_modules/%40sidekick-monorepo/internship-backend/index.mjs"],"sourcesContent":["import { cn as a, cm as c } from \"./index-DEw3DZd-.mjs\";\nexport {\n  a as startMockingNotes,\n  c as startMockingSocial\n};\n"],"names":[],"mappings":";AAAA","ignoreList":[0]}}]
+}

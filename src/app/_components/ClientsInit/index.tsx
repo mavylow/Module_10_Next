@@ -38,7 +38,9 @@ function ClientsInit({ children }: ClientsInitProps) {
     enableMocking();
   }, []);
 
-  if (!ready) return null;
+  if (!ready) {
+    return null;
+  }
 
   return (
     <Provider store={store}>

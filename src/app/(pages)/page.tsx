@@ -23,7 +23,9 @@ function Home() {
   }, [refetchPosts]);
 
   const sortedPosts = useMemo(() => {
-    if (!posts) return [];
+    if (!posts) {
+      return [];
+    }
     return [...posts].sort(
       (a, b) =>
         new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()

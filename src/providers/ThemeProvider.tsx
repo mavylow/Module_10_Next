@@ -28,7 +28,9 @@ const ThemeProvider = observer(({ children }: ThemeProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (!isInitialized) return;
+    if (!isInitialized) {
+      return;
+    }
 
     document.documentElement.setAttribute("data-theme", theme.value);
     localStorage.setItem("theme", theme.value);

@@ -1,10 +1,11 @@
 "use client";
+
 import { createContext, useEffect, type ReactNode } from "react";
 import { type IProfileForm, type IUser } from "@/interfaces";
 import { updateUserAxios } from "@utils/apiUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { type AppDispatch, type RootState } from "@/store";
-import { restoreAuth, setUser } from "@/slices/authSlice";
+import { restoreAuth, setUser } from "@slices/authSlice";
 import { setModal } from "@slices/modalSlice";
 import { CircularProgress } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";

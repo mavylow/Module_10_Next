@@ -16,17 +16,15 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@app*": ["src/app/*"],
-      "@components/*": ["src/app/_components/*"],
-      "@assets/*": ["src/app/_assets/*"],
+      "@app/*": ["src/app/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
       "@utils/*": ["src/utils/*"],
       "@store/*": ["src/store/*"],
       "@slices/*": ["src/slices/*"],
       "@providers/*": ["src/providers/*"],
-      "@auth/*": ["src/app/(pages)/(auth)/*"],
-      "@pages/*": ["src/app/(pages)/*"],
+      "@auth/*": ["src/app/(auth)/*"],
       "@tests/*": ["src/tests/*"]
-
     },
     "plugins": [
       {
@@ -37,10 +35,11 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "**/*.mts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/app/page.js", "src/app/_components/ClientsInit"  ],
+    "**/*.tsx",
+    "**/*.mts",
+    "src/app/page.js", 
+    "src/components/ClientsInit/**/*"
+  ],
   "exclude": ["node_modules"]
 }

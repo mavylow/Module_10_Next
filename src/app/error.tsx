@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorIcon from "@assets/CrossIcon";
+import ErrorIcon from "@/assets/CrossIcon";
 import { createGlobalStyle } from "styled-components";
 
 const Global = createGlobalStyle`

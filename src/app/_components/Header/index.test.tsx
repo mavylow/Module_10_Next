@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, expect, it, afterEach, jest } from "@jest/globals";
+import "@testing-library/jest-dom";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import Header from "@components/Header";
@@ -8,7 +9,7 @@ import { Provider, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { mockUser } from "@/tests/consts";
 import { useProfilePage } from "@/store/profileStore";
-import { NavLink } from "react-router";
+import Link from "next/link";
 
 const createTestStore = (initialState = {}) => {
   return configureStore({
@@ -27,11 +28,22 @@ const createTestStore = (initialState = {}) => {
   });
 };
 
-vi.mocked(NavLink).mockImplementation(({ children, to, onClick }: any) => (
-  <a href={to} onClick={onClick} data-testid={`nav-${to}`}>
-    {children}
-  </a>
-));
+jest.mock("next/link", () => {
+  const MockLink = ({ children, href, onClick, ...props }: any) => {
+    return (
+      <a
+        href={href}
+        onClick={onClick}
+        data-testid={`nav-${href?.replace(/\//g, "-") || "home"}`}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  };
+  MockLink.displayName = "MockLink";
+  return MockLink;
+});
 
 const renderComponent = (store = createTestStore()) => {
   return render(
@@ -43,13 +55,13 @@ const renderComponent = (store = createTestStore()) => {
 
 describe("Header", () => {
   afterEach(() => {
-    vi.clearAllMocks();
+    jest.clearAllMocks();
     cleanup();
   });
 
   it("header without auth", () => {
-    vi.stubGlobal("innerWidth", 769);
-    vi.mocked(useSelector).mockReturnValue(null);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
+    jest.mocked(useSelector).mockReturnValue(null);
     renderComponent();
 
     expect(screen.getByTestId("logo-text-icon")).toBeInTheDocument();
@@ -60,9 +72,9 @@ describe("Header", () => {
   });
 
   it("header with auth", () => {
-    vi.spyOn(window.screen, "width", "get").mockReturnValue(769);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
 
-    vi.mocked(useSelector).mockReturnValue(mockUser);
+    jest.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     expect(screen.getByTestId("logo-text-icon")).toBeInTheDocument();
@@ -76,21 +88,21 @@ describe("Header", () => {
   });
 
   it("changing desktop top mobile class", () => {
-    vi.stubGlobal("innerWidth", 769);
-    vi.mocked(useSelector).mockReturnValue(mockUser);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
+    jest.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
     expect(screen.getByTestId(`header`).className).toMatch(/desktop.+/);
 
     cleanup();
-    vi.stubGlobal("innerWidth", 767);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
     renderComponent();
 
     expect(screen.getByTestId(`header`).className).toMatch(/mobile.+/);
   });
 
   it("expand and hide mobile menu", async () => {
-    vi.stubGlobal("innerWidth", 767);
-    vi.mocked(useSelector).mockReturnValue(mockUser);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
+    jest.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen
@@ -121,8 +133,8 @@ describe("Header", () => {
   });
 
   it("navigating to profile page", async () => {
-    vi.stubGlobal("innerWidth", 767);
-    vi.mocked(useSelector).mockReturnValue(mockUser);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
+    jest.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen
@@ -140,8 +152,8 @@ describe("Header", () => {
   });
 
   it("navigating to statistics", async () => {
-    vi.stubGlobal("innerWidth", 767);
-    vi.mocked(useSelector).mockReturnValue(mockUser);
+    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
+    jest.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen

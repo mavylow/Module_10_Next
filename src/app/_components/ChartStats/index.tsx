@@ -38,7 +38,7 @@ export function ChartStats({ title, stats }: ITableStats) {
             {
               tickMinStep: 1,
               min: 0,
-              max: 10,
+              max: 8,
             },
           ]}
           series={[

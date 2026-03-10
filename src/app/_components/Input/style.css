@@ -1,4 +1,5 @@
 .default-input {
+  height: 48px;
   background-color: var(--background-main);
   border: 1px solid var(--border-color);
   padding: 0.5em;

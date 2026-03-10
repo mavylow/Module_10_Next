@@ -24,7 +24,8 @@
       "@slices/*": ["src/slices/*"],
       "@providers/*": ["src/providers/*"],
       "@auth/*": ["src/app/(pages)/(auth)/*"],
-      "@pages/*": ["src/app/(pages)/*"]
+      "@pages/*": ["src/app/(pages)/*"],
+      "@tests/*": ["src/tests/*"]
 
     },
     "plugins": [

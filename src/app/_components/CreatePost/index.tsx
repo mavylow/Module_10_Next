@@ -11,7 +11,7 @@ import UploadFileIcon from "@assets/UploadFileIcon";
 import ErrorIcon from "@assets/CrossIcon";
 import Textarea from "@components/Textarea";
 import * as Yup from "yup";
-import { addPostsAxios } from "@/utils/apiUtil";
+import { addPostsAxios } from "@utils/apiUtil";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import InputMessage from "@components/InputMessage";

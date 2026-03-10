@@ -1,4 +1,4 @@
-import "./svg.css";
+import "@assets/svg.css";
 
 export const SidekickLogoText = () => {
   return (

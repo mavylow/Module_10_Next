@@ -1,6 +1,6 @@
 "use client";
 import type { ComponentType } from "react";
-import "./style.css";
+import "@components/Button/style.css";
 
 interface ActionButtonProps {
   description?: string;

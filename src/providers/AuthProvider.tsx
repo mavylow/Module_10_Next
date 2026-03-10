@@ -5,7 +5,7 @@ import { updateUserAxios } from "@utils/apiUtil";
 import { useDispatch, useSelector } from "react-redux";
 import { type AppDispatch, type RootState } from "@/store";
 import { restoreAuth, setUser } from "@/slices/authSlice";
-import { setModal } from "@/slices/modalSlice";
+import { setModal } from "@slices/modalSlice";
 import { CircularProgress } from "@mui/material";
 import { usePathname, useRouter } from "next/navigation";
 

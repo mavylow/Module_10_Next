@@ -1,7 +1,7 @@
 import type { IForm, IUser } from "@/interfaces";
 import { loginUser, restoreUser, signUpUser } from "@/utils/apiUtil";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { modalSlice } from "./modalSlice";
+import { modalSlice } from "@slices/modalSlice";
 import DOMPurify from "dompurify";
 
 interface IAuthState {

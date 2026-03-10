@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
 
-import "./style.css";
+import "@components/Modal/style.css";
 import CrossIcon from "@assets/CrossIcon";
 import { PopUpContext } from "@/providers/PopupProvider";
 import Portal from "@components/Portal";

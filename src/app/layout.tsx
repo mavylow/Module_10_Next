@@ -4,7 +4,6 @@ import Footer from "@components/Footer";
 import { createGlobalStyle } from "styled-components";
 import ClientsInit from "@components/ClientsInit";
 import ContextProvider from "@providers/ContextProvider";
-import { poppins } from "./_ui/fonts";
 
 const Global = createGlobalStyle`
 * {

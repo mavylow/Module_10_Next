@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { Frame } from "./index.styled";
+import { Frame } from "@components/FrameWrapper/index.styled";
 
 interface FrameWrapperProps {
   children: ReactNode;

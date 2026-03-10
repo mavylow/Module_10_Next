@@ -45,7 +45,7 @@ import {
   PostHeader,
   PostInfo,
   WithoutComment,
-} from "./index.styled";
+} from "@components/Post/index.styled";
 
 interface PostProps {
   post: IPost;

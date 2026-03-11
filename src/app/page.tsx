@@ -12,7 +12,7 @@ import { Suspense, useCallback, useMemo } from "react";
 
 function Home() {
   const { data: posts, refetch: refetchPosts } = useSuspenseQuery<IPost[]>({
-    queryKey: ["post"],
+    queryKey: ["posts"],
     queryFn: loadPosts,
   });
 
@@ -34,18 +34,20 @@ function Home() {
 
   return (
     <Suspense fallback={<Fallback />}>
-      <main className="home">
+      <div className="wrapper">
+        <main className="home">
+          {user && <CreatePost onAdd={handleRefetch} />}
+          {sortedPosts?.map((post) => (
+            <Post
+              data-testid="post"
+              key={post.id}
+              post={post}
+              onLike={handleRefetch}
+            />
+          ))}
+        </main>
         {user && <Sidebar />}
-        {user && <CreatePost onAdd={handleRefetch} />}
-        {sortedPosts?.map((post) => (
-          <Post
-            data-testid="post"
-            key={post.id}
-            post={post}
-            onLike={handleRefetch}
-          />
-        ))}
-      </main>
+      </div>
     </Suspense>
   );
 }

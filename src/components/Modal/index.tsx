@@ -9,8 +9,8 @@ import Button from "@components/Button";
 import type { IModal } from "@/interfaces";
 import { useTranslation } from "react-i18next";
 
-function Modal({ message, status }: IModal) {
-  const { isOpen, handleCloseModal } = useContext(PopUpContext);
+function Modal({ id, isOpen, message, status }: IModal) {
+  const { handleCloseModal } = useContext(PopUpContext);
   const { t } = useTranslation();
 
   return (
@@ -23,7 +23,7 @@ function Modal({ message, status }: IModal) {
         <Button
           Icon={CrossIcon}
           type="button"
-          onButtonClick={handleCloseModal}
+          onButtonClick={() => handleCloseModal(id)}
           description="close modal button"
         />
       </div>

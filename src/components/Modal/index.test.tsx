@@ -20,10 +20,9 @@ const mockHandleClose = vi.fn();
 
 const renderModal = (isOpen = true) => {
   const mockContext = {
-    isOpen,
-    handleShowModal: vi.fn(),
     handleCloseModal: mockHandleClose,
   };
+  const mockModalProps = { isOpen, ...modalProps };
   render(
     <PopUpContext.Provider value={{ ...mockContext }}>
       <Modal {...mockModalProps} />
@@ -31,7 +30,8 @@ const renderModal = (isOpen = true) => {
   );
 };
 
-const mockModalProps = {
+const modalProps = {
+  id: 1,
   message: "Modal message",
   status: "success" as const,
 };

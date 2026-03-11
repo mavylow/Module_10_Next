@@ -94,6 +94,8 @@ export interface MonthStat {
 export type TProfilePages = "info" | "statistics";
 
 export type IModal = {
+  id: number
+  isOpen: boolean
   message: string;
   status: modalStatus;
 };

@@ -98,13 +98,14 @@ a {
 }
 
 .wrapper {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
 @media (min-width: 1450px) {
-  .wrapper {
+  .home.auth {
     margin-left: 341px;
   }
 }

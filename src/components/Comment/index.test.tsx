@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Comment from "@/_assets/_components/Comment";
+import Comment from "@components/Comment";
 import userEvent from "@testing-library/user-event";
 import { mockComment } from "@/tests/consts";
 

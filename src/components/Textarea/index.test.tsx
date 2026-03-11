@@ -2,7 +2,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import userEvent from "@testing-library/user-event";
-import Textarea from "@/_assets/_components/Textarea";
+import Textarea from "@components/Textarea";
 
 const MockIcon = () => <svg data-testid="mock-icon" />;
 

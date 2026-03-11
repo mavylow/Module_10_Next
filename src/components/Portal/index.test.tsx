@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Portal from "@/_assets/_components/Portal";
+import Portal from "@components/Portal";
 
 describe("Portal", () => {
   let modalRoot: HTMLElement;

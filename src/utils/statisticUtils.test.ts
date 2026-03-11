@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest"
 import {calculateFullStats, getCurrentMonthStats} from "@utils/statisticUtils"
-import { COMMENTS, LIKES, RESULT_COMMENT_STATS, RESULT_LIKE_STATS } from "@/consts/testConst"
+import { COMMENTS, LIKES, RESULT_COMMENT_STATS, RESULT_LIKE_STATS } from "@tests/consts"
 
 describe("calculateFullStats", () => {
     it('likes', () => {

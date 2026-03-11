@@ -8,5 +8,9 @@ interface FrameWrapperProps {
 }
 
 export default function FrameWrapper({ children }: FrameWrapperProps) {
-  return <Frame className="frame">{children}</Frame>;
+  return (
+    <Frame className="frame" data-testid="frame-wrapper">
+      {children}
+    </Frame>
+  );
 }

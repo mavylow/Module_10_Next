@@ -75,17 +75,23 @@ vi.mock("react-redux", async () => {
   };
 });
 
-vi.mock("react-router", () => {
+vi.mock("next/navigation", () => {
   const actual = vi.importActual("react-router");
   return {
     ...actual,
-    NavLink: vi.fn(),
-    useNavigate: () => {
-      navigate: vi.fn();
+    Link: vi.fn(),
+    useRouter: () => {
+      navigate: {
+        replace: vi.fn();
+      }
     },
-    useLocation: () => location,
+    usePathname: () => location,
   };
 });
+
+vi.mock("next/link", () => ({
+  default: vi.fn(),
+}));
 
 vi.mock("@/slices/authSlice", async () => {
   const actual = await vi.importActual("@/slices/authSlice");

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, type Mock, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Sidebar from ".";
+import Sidebar from "@components/Sidebar";
 import { useQuery } from "@tanstack/react-query";
 
 vi.mock("@components/SidebarElement", () => ({

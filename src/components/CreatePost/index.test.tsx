@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import CreatePost from "@/_assets/_components/CreatePost";
+import CreatePost from "@components/CreatePost";
 import authReducer from "@/slices/authSlice";
 import userEvent from "@testing-library/user-event";
 import { addPostsAxios } from "@utils/apiUtil";

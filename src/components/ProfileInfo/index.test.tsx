@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import ProfileInfo from "@/_assets/_components/ProfileInfo";
+import ProfileInfo from "@components/ProfileInfo";
 import { AuthContext } from "@providers/AuthProvider";
 
 import "@testing-library/jest-dom/vitest";

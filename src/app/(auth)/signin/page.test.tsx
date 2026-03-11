@@ -1,14 +1,15 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
-import SignIn from "@pages/auth/SignIn";
+import SignIn from "@auth/signin/page";
 import { userEvent } from "@testing-library/user-event";
 import authReducer, { signIn } from "@/slices/authSlice";
 import "@testing-library/jest-dom/vitest";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { NavLink } from "react-router";
 
-vi.mocked(NavLink).mockImplementation(({ children, to, className }: any) => (
+import Link from "next/link";
+
+vi.mocked(Link).mockImplementation(({ children, to, className }: any) => (
   <a href={to} className={className} data-testid={`nav-${to}`}>
     {children}
   </a>
@@ -145,12 +146,12 @@ describe("SignIn", () => {
 
     await user.click(navLink);
 
-    expect(NavLink).toHaveBeenCalledTimes(1);
-    expect(NavLink).toHaveBeenCalledWith(
+    expect(Link).toHaveBeenCalledTimes(1);
+    expect(Link).toHaveBeenCalledWith(
       {
         children: "signUp",
         className: "nav-link",
-        to: "/signup",
+        href: "/signup",
       },
       undefined
     );

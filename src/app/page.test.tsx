@@ -1,17 +1,17 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { describe, expect, it, afterEach, jest } from "@jest/globals";
-import "@testing-library/jest-dom";
+import { describe, expect, it, afterEach, vi } from "vitest";
+import "@testing-library/jest-dom/vitest";
 import Home from "@/app/page";
 import authReducer from "@/slices/authSlice";
 import { Provider, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { mockPosts, mockUser } from "@/tests/consts";
 
-jest.mock("@components/Sidebar", () => ({
+vi.mock("@components/Sidebar", () => ({
   default: () => <aside data-testid="sidebar" />,
 }));
 
-jest.mock("@components/CreatePost", () => ({
+vi.mock("@components/CreatePost", () => ({
   default: () => <form data-testid="create-post" />,
 }));
 
@@ -46,7 +46,7 @@ describe("Home", () => {
   });
 
   it("homepage without auth", () => {
-    jest.mocked(useSelector).mockReturnValue(null);
+    vi.mocked(useSelector).mockReturnValue(null);
     renderComponent();
 
     const posts = screen.getAllByTestId("post");
@@ -64,7 +64,7 @@ describe("Home", () => {
   });
 
   it("homepage with auth", () => {
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const posts = screen.getAllByTestId("post");

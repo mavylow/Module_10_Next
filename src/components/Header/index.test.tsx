@@ -1,8 +1,7 @@
-import { describe, expect, it, afterEach, jest } from "@jest/globals";
-import "@testing-library/jest-dom";
+import { describe, expect, it, afterEach, vi } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Header from "@/_assets/_components/Header";
+import Header from "@components/Header";
 import authReducer from "@/slices/authSlice";
 import userEvent from "@testing-library/user-event";
 import { Provider, useSelector } from "react-redux";
@@ -10,6 +9,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { mockUser } from "@/tests/consts";
 import { useProfilePage } from "@/store/profileStore";
 import Link from "next/link";
+
+vi.mocked(Link).mockImplementation(({ children, href, onClick }: any) => (
+  <a href={href} onClick={onClick} data-testid={`nav-${href}`}>
+    {children}
+  </a>
+));
 
 const createTestStore = (initialState = {}) => {
   return configureStore({
@@ -28,23 +33,6 @@ const createTestStore = (initialState = {}) => {
   });
 };
 
-jest.mock("next/link", () => {
-  const MockLink = ({ children, href, onClick, ...props }: any) => {
-    return (
-      <a
-        href={href}
-        onClick={onClick}
-        data-testid={`nav-${href?.replace(/\//g, "-") || "home"}`}
-        {...props}
-      >
-        {children}
-      </a>
-    );
-  };
-  MockLink.displayName = "MockLink";
-  return MockLink;
-});
-
 const renderComponent = (store = createTestStore()) => {
   return render(
     <Provider store={store}>
@@ -55,13 +43,13 @@ const renderComponent = (store = createTestStore()) => {
 
 describe("Header", () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     cleanup();
   });
 
   it("header without auth", () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
-    jest.mocked(useSelector).mockReturnValue(null);
+    vi.stubGlobal("innerWidth", 769);
+    vi.mocked(useSelector).mockReturnValue(null);
     renderComponent();
 
     expect(screen.getByTestId("logo-text-icon")).toBeInTheDocument();
@@ -72,9 +60,9 @@ describe("Header", () => {
   });
 
   it("header with auth", () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
+    vi.stubGlobal("innerWidth", 769);
 
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     expect(screen.getByTestId("logo-text-icon")).toBeInTheDocument();
@@ -88,21 +76,21 @@ describe("Header", () => {
   });
 
   it("changing desktop top mobile class", () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(769);
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.stubGlobal("innerWidth", 769);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
     expect(screen.getByTestId(`header`).className).toMatch(/desktop.+/);
 
     cleanup();
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
+    vi.stubGlobal("innerWidth", 767);
     renderComponent();
 
     expect(screen.getByTestId(`header`).className).toMatch(/mobile.+/);
   });
 
   it("expand and hide mobile menu", async () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.stubGlobal("innerWidth", 767);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen
@@ -133,8 +121,8 @@ describe("Header", () => {
   });
 
   it("navigating to profile page", async () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.stubGlobal("innerWidth", 767);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen
@@ -152,8 +140,8 @@ describe("Header", () => {
   });
 
   it("navigating to statistics", async () => {
-    jest.spyOn(window.screen, "width", "get").mockReturnValue(767);
-    jest.mocked(useSelector).mockReturnValue(mockUser);
+    vi.stubGlobal("innerWidth", 767);
+    vi.mocked(useSelector).mockReturnValue(mockUser);
     renderComponent();
 
     const expandedButton = screen

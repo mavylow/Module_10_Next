@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Modal from "@/_assets/_components/Modal";
+import Modal from "@components/Modal";
 import userEvent from "@testing-library/user-event";
 import { PopUpContext } from "@/providers/PopupProvider";
 import type { ReactNode } from "react";

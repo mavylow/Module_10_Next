@@ -1,7 +1,7 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import StatisticCard from "@/_assets/_components/StatisticCard";
+import StatisticCard from "@components/StatisticCard";
 
 describe("StatisticCard", () => {
   afterEach(() => {

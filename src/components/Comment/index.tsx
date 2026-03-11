@@ -1,5 +1,3 @@
-"use client";
-
 import TrashIcon from "@assets/TrashIcon";
 import type { IComment } from "@/interfaces";
 import Button from "@components/Button";

@@ -1,5 +1,3 @@
-"use client";
-
 import "@components/Textarea/style.css";
 import type { ChangeEvent, ComponentType } from "react";
 

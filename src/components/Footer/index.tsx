@@ -1,5 +1,3 @@
-"use client";
-
 import "@components/Footer/style.css";
 
 function Footer() {

@@ -1,5 +1,3 @@
-"use client";
-
 import "@components/SidebarElement/style.css";
 import type { IGroup, ISidebarUser } from "@/interfaces";
 

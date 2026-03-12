@@ -5,7 +5,7 @@ const LoadingDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  flex-grow: 1;
   min-height: 200px;
   width: 100%;
 `;

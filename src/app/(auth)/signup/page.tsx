@@ -12,7 +12,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
 import ThumbUpIcon from "@/assets/ThumbUpIcon";
 import { useForm } from "react-hook-form";
-import { NavLink, useNavigate } from "react-router";
 import CrossIcon from "@/assets/CrossIcon";
 import CheckIcon from "@/assets/CheckIcon";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +19,7 @@ import type { AppDispatch, RootState } from "@/store";
 import { signUp } from "@/slices/authSlice";
 import InputMessage from "@components/InputMessage";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 
 function SignUp() {
@@ -54,7 +53,6 @@ function SignUp() {
   const [isPasswordOpen, setIsPasswordOpen] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector<RootState>((state) => state.auth.isAuth);
-  const navigate = useRouter();
   const showEmailValidation = touchedFields.email || submitCount > 0;
 
   const showPasswordValidation = touchedFields.password || submitCount > 0;
@@ -65,7 +63,7 @@ function SignUp() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate.replace("/");
+      redirect("/");
     }
   }, [isAuth]);
 

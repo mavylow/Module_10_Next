@@ -20,7 +20,7 @@ import type { AppDispatch, RootState } from "@/store";
 import { signIn } from "@/slices/authSlice";
 import InputMessage from "@components/InputMessage";
 import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -33,7 +33,6 @@ export default function SignIn() {
       .matches(/[0-9]/, t("passwordContainNumber")),
   });
 
-  const navigate = useRouter();
   const dispatch = useDispatch<AppDispatch>();
   const isAuth = useSelector<RootState>((state) => state.auth.isAuth);
   const form = useFormik<IForm>({
@@ -50,7 +49,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (isAuth) {
-      navigate.replace("/");
+      redirect("/");
     }
   }, [isAuth]);
 

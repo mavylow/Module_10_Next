@@ -4,7 +4,7 @@ import Modal from "@components/Modal";
 import type { RootState } from "@/store";
 import { createContext, useEffect, useRef, type ReactNode } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsOpen } from "@/slices/modalSlice";
+import { removeModal, setIsOpen } from "@/slices/modalSlice";
 
 interface IPopUpContext {
   handleCloseModal: (id: number) => void;
@@ -44,6 +44,20 @@ function PopUpProvider({ children }: IPopUpProvider) {
         }
       });
     }
+  }, [modals, dispatch]);
+
+  useEffect(() => {
+    const closedModals = modals.filter((modal) => !modal.isOpen);
+
+    closedModals.forEach((modal) => {
+      setTimeout(() => {
+        dispatch(removeModal(modal.id));
+        if (timeoutsRef.current.has(modal.id)) {
+          clearTimeout(timeoutsRef.current.get(modal.id));
+          timeoutsRef.current.delete(modal.id);
+        }
+      }, 300);
+    });
   }, [modals, dispatch]);
 
   const handleCloseModal = (id: number) => {

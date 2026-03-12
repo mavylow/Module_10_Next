@@ -135,6 +135,7 @@ i18next
           signInStatus: {
             success: "Signed in successfully",
             error: "Authentication failed",
+            fetchError: "Data fetching error",
           },
 
           signUpStatus: {
@@ -281,6 +282,7 @@ i18next
           signInStatus: {
             success: "Вы успешно вошли",
             error: "Ошибка входа",
+            fetchError: "Данные не найдены",
           },
 
           signUpStatus: {
@@ -419,6 +421,7 @@ i18next
           signInStatus: {
             success: "Accesso effettuato con successo",
             error: "Autenticazione fallita",
+            fetchError: "Errore nel recupero dei dati",
           },
 
           signUpStatus: {

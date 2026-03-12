@@ -86,6 +86,7 @@ vi.mock("next/navigation", () => {
       }
     },
     usePathname: () => location,
+    redirect: vi.fn(),
   };
 });
 

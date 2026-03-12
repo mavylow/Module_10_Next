@@ -70,11 +70,11 @@ form button {
   top: 0;
   right: 0;
 }
-.error .svg-x {
+.email-warning .svg-x {
   height: 16px;
   width: 16px;
 }
-.error .svg-x path {
+.email-warning .svg-x path {
   fill: var(--primary-red);
 }
 .password-icon {

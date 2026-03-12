@@ -21,17 +21,21 @@ export const modalSlice = createSlice({
     setModal(state, action) {
       const newModal = {message: action.payload.message, status: action.payload.status, isOpen: true, id: state.length+1}
       state.push(newModal);
-      console.log(state, action)
+      console.log(state.filter((m)=>m.isOpen))
     },
     setIsOpen: (state, action) => {
       const index = state.findIndex((m) => m.id === action.payload.id);
       if (index !== -1) {
         state[index].isOpen = action.payload.isOpen;
       }
-    }
+    },
+
+    removeModal: (state, action) => {
+      return state.filter((m) => m.id !== action.payload);
+    },
     
   },
 });
 
 export default modalSlice.reducer
-export const {setModal, setIsOpen} = modalSlice.actions
+export const {setModal, setIsOpen, removeModal} = modalSlice.actions

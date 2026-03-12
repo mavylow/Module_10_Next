@@ -167,7 +167,6 @@ function CreatePost({ onAdd }: ICreatePostProps) {
               <InputMessage
                 Icon={ErrorWarningIcon}
                 status="error"
-                // message={postForm.errors.image}
                 message="error"
               />
             ) : (

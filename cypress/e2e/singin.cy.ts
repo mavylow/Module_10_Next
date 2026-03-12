@@ -32,7 +32,7 @@ describe('SignIn', () => {
     cy.get(".input-message").should('contain.text', "Your password is strong")
 
     cy.get("form button").click()
-
+    cy.get('[data-testid="modal-message"] span').should("exist")
     cy.location().its('href').should("equal", "http://localhost:3000/");
 
     cy.get("aside").should("exist")
@@ -52,7 +52,7 @@ describe('SignIn', () => {
     cy.get(".input-message").should('contain.text', "Password must contain at least one number")
 
     cy.get("form button").click()
-    cy.get('[data-testid="modal-message"] span').should("be.hidden")
+    cy.get('[data-testid="modal-message"] span').should("not.exist")
     cy.location().its('href').should("not.equal", "http://localhost:3000/");
   })
 
@@ -64,6 +64,7 @@ describe('SignIn', () => {
     cy.get("#password").type("password123")
 
     cy.get("form button").click()
+    cy.get('[data-testid="modal-message"] span').should("not.exist")
     cy.location().its('href').should("not.equal", "http://localhost:3000/");
   })
 

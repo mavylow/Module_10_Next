@@ -1,4 +1,13 @@
 import styled from "styled-components";
+import {Frame} from "@components/FrameWrapper/index.styled";
+
+export const PostFrame = styled(Frame)`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-bottom: none;
+
+`;
 
 export const PostArticle = styled.article`
   width: 100%;
@@ -32,6 +41,10 @@ export const PostArticle = styled.article`
     height: 24px;
   }
 
+    &:last-child ${PostFrame} {
+    border-bottom: 2px solid var(--border-color);
+  }
+
   @media (max-width: 375px) {
     svg {
       height: 18px;
@@ -45,16 +58,7 @@ export const WithoutComment = styled.div`
   gap: 16px;
 `;
 
-export const PostFrame = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  border-bottom: none;
 
-  &:last-child {
-    border-bottom: 1px solid var(--border-color);
-  }
-`;
 
 export const PostHeader = styled.div`
   display: grid;
@@ -82,13 +86,6 @@ export const PostAvatar = styled.img`
   grid-row: 1 / span 2;
 `;
 
-export const Figure = styled.figure`
-
-  img {
-    width: 100%;
-    object-fit: cover;
-  }
-`;
 
 export const PostInfo = styled.div`
   display: flex;

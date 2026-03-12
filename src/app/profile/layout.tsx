@@ -1,33 +1,19 @@
-"use client";
-
-import { useProfilePage } from "@/store/profileStore";
+import { Metadata } from "next";
 import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
+import ProfileNav from "@components/ProfileNav";
 
 interface ProfileLayoutProps {
   children: ReactNode;
 }
 
-function ProfileLayout({ children }: ProfileLayoutProps) {
-  const { t } = useTranslation();
-  const { profilePage, changePage } = useProfilePage((state) => state);
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
+function ProfileLayout({ children }: ProfileLayoutProps) {
   return (
     <main className="profile">
-      <nav>
-        <a
-          onClick={() => changePage("info")}
-          className={profilePage === "info" ? "active" : ""}
-        >
-          {t("profileInfo")}
-        </a>
-        <a
-          onClick={() => changePage("statistics")}
-          className={profilePage === "statistics" ? "active" : ""}
-        >
-          {t("statistics")}
-        </a>
-      </nav>
+      <ProfileNav />
       {children}
     </main>
   );

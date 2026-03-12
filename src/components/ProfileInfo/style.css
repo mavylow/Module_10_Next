@@ -37,17 +37,18 @@
   height: 24px;
 }
 
-.language select {
-  border: 1px solid var(--border-color);
-  outline: 1px solid var(--border-color);
+.custom-select {
+  position: relative;
   width: 90px;
 }
 
-.language select option {
-  all: unset;
-  background-color: var(--background-main);
-  color: var(--text-color);
+.select-items div {
   padding: 8px;
+  cursor: pointer;
+}
+
+.select-items div:hover {
+  background-color: var(--hover-color);
 }
 
 .edit-profile input {

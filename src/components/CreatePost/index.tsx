@@ -19,6 +19,7 @@ import InputMessage from "@components/InputMessage";
 import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
 import DOMPurify from "dompurify";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 const postFormInitial = {
   title: "",
@@ -167,7 +168,7 @@ function CreatePost({ onAdd }: ICreatePostProps) {
               <InputMessage
                 Icon={ErrorWarningIcon}
                 status="error"
-                message="error"
+                message={postForm.errors.image as string}
               />
             ) : (
               <InputMessage
@@ -183,7 +184,12 @@ function CreatePost({ onAdd }: ICreatePostProps) {
       <FrameWrapper>
         <div className="create-post">
           <div>
-            <img src={user?.profileImage} alt="profile-image" />
+            <Image
+              src={user?.profileImage}
+              alt="profile-image"
+              width={64}
+              height={64}
+            />
             <span>{t("whatHappening")}</span>
           </div>
 

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { type RootState } from "@/store";
 import { useProfilePage } from "@store/profileStore";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 
 function Header() {
   const [isMobile, setIsMobile] = useState(false);
@@ -112,10 +113,16 @@ function Header() {
                 ) : (
                   <>
                     <Link href={"/profile"}>
-                      <img
+                      <Image
                         src={user.profileImage}
-                        className="avatar"
                         alt="profile-image"
+                        height={24}
+                        width={24}
+                        style={{
+                          objectFit: "cover",
+                          borderRadius: "50%",
+                        }}
+                        priority={true}
                       />
                     </Link>
                     <Link href={"/profile"}>
@@ -143,11 +150,16 @@ function Header() {
             aria-label="hamburger menu button"
           >
             {user && isExpanded ? (
-              <img
-                key={user?.profileImage}
+              <Image
                 src={user?.profileImage || "/image/default-avatar.webp"}
-                className="avatar"
                 alt="Hide menu profile image"
+                height={24}
+                width={24}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
+                loading="lazy"
               />
             ) : (
               <Hamburger />

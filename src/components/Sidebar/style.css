@@ -1,6 +1,6 @@
 aside .frame {
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 12px;
 }
 
 aside {
@@ -9,6 +9,12 @@ aside {
   height: 100vh;
   width: 341px;
   font-size: 16px;
+}
+
+aside section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 aside h3 {

@@ -26,6 +26,7 @@ interface AuthProviderProps {
 
 function AuthProvider({ children }: AuthProviderProps) {
   const location = usePathname();
+  const navigate = useRouter();
 
   const { user, isLoading: loading } = useSelector(
     (state: RootState) => state.auth
@@ -40,12 +41,11 @@ function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const protectedRoutes = ["/profile"];
     if (!loading && !user && protectedRoutes.includes(location)) {
-      redirect("/");
+      navigate.replace("/");
     }
   }, [user, location, loading]);
 
   const updateUser = async (updatedUser: IProfileForm) => {
-    console.log(updatedUser);
     const newUser = await updateUserAxios(JSON.stringify(updatedUser));
     if (newUser) {
       dispatch(setUser(newUser));

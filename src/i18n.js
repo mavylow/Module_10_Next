@@ -152,10 +152,6 @@ i18next
           logOutStatus: {
             success: "Logged out successfully",
           },
-
-          english: "English",
-          russian: "Russian",
-          italian: "Italian",
         },
       },
 

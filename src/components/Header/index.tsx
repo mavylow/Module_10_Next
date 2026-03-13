@@ -164,7 +164,7 @@ function Header() {
               <Image
                 src={
                   process.env.NEXT_PUBLIC_BASE_PATH + user?.profileImage ||
-                  "./image/default-avatar.webp"
+                  process.env.NEXT_PUBLIC_BASE_PATH + "/assets/image.png"
                 }
                 alt="Hide menu profile image"
                 height={24}

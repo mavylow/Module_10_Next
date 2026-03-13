@@ -115,8 +115,6 @@ function Statistics() {
     };
   }, [likesStats, commentsStats, postsStats]);
 
-  console.log(commentsStats);
-
   const handleToggle = () => {
     setTabView((prev) => (prev === "table" ? "chart" : "table"));
   };

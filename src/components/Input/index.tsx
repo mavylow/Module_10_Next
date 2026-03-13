@@ -10,6 +10,7 @@ export interface FormInputProps {
   description: string;
   placeholder: string;
   type: string;
+  postId?: string;
   Icon: ComponentType;
   register: UseFormRegister<IForm>;
 }
@@ -22,19 +23,25 @@ export interface InputProps {
   type: string;
   Icon: ComponentType;
   value: string;
+  postId?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input(props: InputProps | FormInputProps) {
   if ("register" in props) {
-    const { id, description, placeholder, type, Icon, register } = props;
+    const { id, description, placeholder, type, Icon, postId, register } =
+      props;
     const registerOptions: RegisterOptions<IForm, "email" | "password"> = {
       required: true,
     };
+    console.log(postId);
 
     return (
       <div className="input-wrapper">
-        <label htmlFor={id} className="default-label">
+        <label
+          htmlFor={postId ? "input" + id + postId : "input" + id}
+          className="default-label"
+        >
           <Icon />
           {description}
         </label>
@@ -42,7 +49,7 @@ export default function Input(props: InputProps | FormInputProps) {
         <input
           data-testid="input"
           className="default-input"
-          id={id}
+          id={postId ? "input" + id + postId : "input" + id}
           placeholder={placeholder}
           type={type}
           aria-describedby="username-success username-error username-warning"
@@ -52,11 +59,23 @@ export default function Input(props: InputProps | FormInputProps) {
       </div>
     );
   } else {
-    const { id, description, name, placeholder, type, Icon, value, onChange } =
-      props;
+    const {
+      id,
+      description,
+      name,
+      placeholder,
+      type,
+      Icon,
+      value,
+      onChange,
+      postId,
+    } = props;
     return (
       <div className="input-wrapper">
-        <label htmlFor={id} className="default-label">
+        <label
+          htmlFor={"input" + postId ? id + postId : id}
+          className="default-label"
+        >
           <Icon />
           {description}
         </label>
@@ -64,7 +83,7 @@ export default function Input(props: InputProps | FormInputProps) {
         <input
           data-testid="input"
           className="default-input"
-          id={id}
+          id={"input" + postId ? id + postId : id}
           name={name}
           placeholder={placeholder}
           type={type}

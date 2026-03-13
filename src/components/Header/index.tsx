@@ -69,7 +69,6 @@ function Header() {
   };
 
   const handleNavigate = (url: string) => {
-    console.log(navigate);
     navigate.replace(url);
   };
 

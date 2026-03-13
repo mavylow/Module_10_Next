@@ -25,7 +25,6 @@ const ThemeProvider = observer(({ children }: ThemeProviderProps) => {
     }
 
     setIsInitialized(true);
-    console.log(theme.value);
   }, []);
 
   useEffect(() => {

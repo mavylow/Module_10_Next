@@ -245,6 +245,7 @@ function Post({ post, onLike }: PostProps) {
               Icon={EditPenIcon}
               value={comment}
               onChange={handleSetComment}
+              postId={id.toString()}
             />
             <Button
               description={t("addAComment")}

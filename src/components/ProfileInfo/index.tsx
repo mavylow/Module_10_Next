@@ -81,7 +81,6 @@ const ProfileInfo = observer(() => {
   };
 
   const changeProfile = (data: IProfileForm) => {
-    console.log(data);
     const sanitizeData = {
       image: DOMPurify.sanitize(data.image || ""),
       username: DOMPurify.sanitize(data?.username || ""),
@@ -209,7 +208,6 @@ const ProfileInfo = observer(() => {
           </div>
           <div className="language">
             <div className="language">
-              <label htmlFor="language-select"></label>
               <Select
                 id="language-select"
                 value={i18n.language}

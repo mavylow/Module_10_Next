@@ -123,7 +123,9 @@ function Header() {
                   <>
                     <Link href={"/profile"}>
                       <Image
-                        src={user.profileImage}
+                        src={
+                          process.env.NEXT_PUBLIC_BASE_PATH + user.profileImage
+                        }
                         alt="profile-image"
                         height={24}
                         width={24}
@@ -160,7 +162,10 @@ function Header() {
           >
             {user && isExpanded ? (
               <Image
-                src={user?.profileImage || "/image/default-avatar.webp"}
+                src={
+                  process.env.NEXT_PUBLIC_BASE_PATH + user?.profileImage ||
+                  "/image/default-avatar.webp"
+                }
                 alt="Hide menu profile image"
                 height={24}
                 width={24}

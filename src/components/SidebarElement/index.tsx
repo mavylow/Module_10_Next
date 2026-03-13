@@ -11,7 +11,7 @@ export function SidebarElement({ element }: SidebarElementProps) {
     return (
       <div className="aside-element">
         <Image
-          src={element.photo}
+          src={process.env.NEXT_PUBLIC_BASE_PATH + element.photo}
           alt="suggested group avatar image"
           height={48}
           width={48}
@@ -26,7 +26,7 @@ export function SidebarElement({ element }: SidebarElementProps) {
     return (
       <div className="aside-element">
         <Image
-          src={element.photo}
+          src={process.env.NEXT_PUBLIC_BASE_PATH + element.photo}
           alt="suggested user avatar image"
           height={48}
           width={48}

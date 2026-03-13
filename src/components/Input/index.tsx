@@ -34,7 +34,6 @@ export default function Input(props: InputProps | FormInputProps) {
     const registerOptions: RegisterOptions<IForm, "email" | "password"> = {
       required: true,
     };
-    console.log(postId);
 
     return (
       <div className="input-wrapper">

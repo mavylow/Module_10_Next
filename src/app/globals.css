@@ -105,28 +105,28 @@ a {
 }
 
 .not-found,
-.error {
+.error-page {
   gap: clamp(16px, 3vw, 36px);
 }
 
 .not-found h1,
-.error h1 {
+.error-page h1 {
   font-weight: 600;
   text-align: center;
   font-size: clamp(20px, 5vw, 60px);
 }
 
-.error h1 {
+.error-page h1 {
   text-wrap: nowrap;
 }
 
 .not-found svg,
-.error svg {
+.error-page svg {
   height: clamp(80px, 15vw, 180px);
   width: clamp(80px, 15vw, 180px);
 }
 
-.error svg {
+.error-page svg {
   padding: clamp(16px, 3vw, 36px);
 }
 

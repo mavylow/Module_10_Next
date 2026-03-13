@@ -41,7 +41,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const protectedRoutes = ["/profile"];
     if (!loading && !user && protectedRoutes.includes(location)) {
-      navigate.replace("/");
+      navigate.replace("/" + process.env.NEXT_PUBLIC_BASE_PATH);
     }
   }, [user, location, loading]);
 

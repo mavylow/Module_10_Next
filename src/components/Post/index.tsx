@@ -160,7 +160,11 @@ function Post({ post, onLike }: PostProps) {
           {image && (
             <figure>
               <Image
-                src={process.env.NEXT_PUBLIC_BASE_PATH + image}
+                src={
+                  image.includes("blob")
+                    ? image
+                    : process.env.NEXT_PUBLIC_BASE_PATH + image
+                }
                 alt="post-content image"
                 width={700}
                 height={700}

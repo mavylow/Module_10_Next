@@ -96,7 +96,7 @@ export const addPostsAxios = async (newPost: string) => {
 };
 
 export const loadUser = async (userId: number) => {
-  const user = await fetchRESTData(`api/users/${userId}`, "GET");
+  const user = await fetchRESTData(`/api/users/${userId}`, "GET");
   return user;
 };
 

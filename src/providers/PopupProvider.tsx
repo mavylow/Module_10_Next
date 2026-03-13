@@ -1,63 +1,64 @@
-// "use client";
-// import Modal from "@/components/Modal";
-// import type { RootState } from "@/store";
-// import {
-//   createContext,
-//   useEffect,
-//   useRef,
-//   useState,
-//   type ReactNode,
-// } from "react";
-// import { useSelector } from "react-redux";
+"use client";
 
-// interface IPopUpContext {
-//   isOpen: boolean;
-//   handleCloseModal: () => void;
-// }
+import Modal from "@components/Modal";
+import type { RootState } from "@/store";
+import {
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
+import { useSelector } from "react-redux";
 
-// export const PopUpContext = createContext<IPopUpContext>({
-//   isOpen: false,
-//   handleCloseModal: () => {},
-// });
+interface IPopUpContext {
+  isOpen: boolean;
+  handleCloseModal: () => void;
+}
 
-// interface IPopUpProvider {
-//   children: ReactNode;
-// }
+export const PopUpContext = createContext<IPopUpContext>({
+  isOpen: false,
+  handleCloseModal: () => {},
+});
 
-// function PopUpProvider({ children }: IPopUpProvider) {
-//   const [isOpen, setIsOpen] = useState(false);
+interface IPopUpProvider {
+  children: ReactNode;
+}
 
-//   const modal = useSelector((state: RootState) => state.modal);
+function PopUpProvider({ children }: IPopUpProvider) {
+  const [isOpen, setIsOpen] = useState(false);
 
-//   const timeoutRef = useRef<number | null>(null);
+  const modal = useSelector((state: RootState) => state.modal);
 
-//   useEffect(() => {
-//     if (modal.message) {
-//       handleShowModal();
-//     }
-//   }, [modal]);
+  const timeoutRef = useRef<number | null>(null);
 
-//   const handleShowModal = () => {
-//     setIsOpen(true);
+  useEffect(() => {
+    if (modal.message) {
+      handleShowModal();
+    }
+  }, [modal]);
 
-//     if (timeoutRef.current) {
-//       clearTimeout(timeoutRef.current);
-//     }
+  const handleShowModal = () => {
+    setIsOpen(true);
 
-//     timeoutRef.current = window.setTimeout(() => {
-//       setIsOpen(false);
-//     }, 3000);
-//   };
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
 
-//   const handleCloseModal = () => {
-//     setIsOpen(false);
-//   };
+    timeoutRef.current = window.setTimeout(() => {
+      setIsOpen(false);
+    }, 3000);
+  };
 
-//   return (
-//     <PopUpContext.Provider value={{ isOpen, handleCloseModal }}>
-//       {children}
-//       <Modal {...modal} />
-//     </PopUpContext.Provider>
-//   );
-// }
-// export default PopUpProvider;
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <PopUpContext.Provider value={{ isOpen, handleCloseModal }}>
+      {children}
+      <Modal {...modal} />
+    </PopUpContext.Provider>
+  );
+}
+export default PopUpProvider;

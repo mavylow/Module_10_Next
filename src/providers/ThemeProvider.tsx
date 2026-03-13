@@ -1,7 +1,8 @@
 "use client";
+
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, type ReactNode } from "react";
-import theme from "@/store/themeStore";
+import theme from "@store/themeStore";
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -28,7 +29,9 @@ const ThemeProvider = observer(({ children }: ThemeProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (!isInitialized) return;
+    if (!isInitialized) {
+      return;
+    }
 
     document.documentElement.setAttribute("data-theme", theme.value);
     localStorage.setItem("theme", theme.value);

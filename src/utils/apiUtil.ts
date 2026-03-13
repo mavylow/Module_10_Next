@@ -148,7 +148,7 @@ export const deleteComment = async (commentId: number) => {
 };
 
 export const addComment = async (commentData: string) => {
-  await fetchRESTData("api/comments", "POST", commentData);
+  await fetchRESTData("/api/comments", "POST", commentData);
 };
 
 export const likePost = async (postId: number) => {

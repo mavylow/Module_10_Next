@@ -421,13 +421,13 @@ i18next
           },
 
           signInStatus: {
-            success: "Accesso effettuato con successo",
+            success: "Accesso con successo",
             error: "Autenticazione fallita",
             fetchError: "Errore nel recupero dei dati",
           },
 
           signUpStatus: {
-            success: "Registrazione completata con successo",
+            success: "Registrazione successo",
             error: "Registrazione fallita",
           },
 
@@ -438,7 +438,7 @@ i18next
           },
 
           logOutStatus: {
-            success: "Disconnessione effettuata con successo",
+            success: "Disconnessione successo",
           },
         },
       },

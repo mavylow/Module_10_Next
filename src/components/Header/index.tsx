@@ -32,7 +32,11 @@ function Header() {
 
   useEffect(() => {
     setIsExpanded(false);
-    if (location !== "/signin" && location !== "/signup") {
+    if (
+      location === "/signin" ||
+      location === "/signup" ||
+      !(location === "/" || location === "/profile")
+    ) {
       setIsPageAuth(true);
     } else {
       setIsPageAuth(false);
@@ -77,7 +81,7 @@ function Header() {
           " " +
           (isExpanded ? "expanded" : "") +
           " " +
-          (!isPageAuth ? "auth-page" : "")
+          (isPageAuth ? "auth-page" : "")
         }
         data-testid="header"
       >
@@ -85,7 +89,7 @@ function Header() {
           <SidekickLogo />
           <SidekickLogoText />
         </div>
-        {isPageAuth && (
+        {!isPageAuth && (
           <>
             {user ? (
               <nav
@@ -98,14 +102,20 @@ function Header() {
                     <Link
                       data-testid="profile-info"
                       href={"/profile"}
-                      onClick={() => changePage("info")}
+                      onClick={() => {
+                        handleChangeMenuExpanded();
+                        changePage("info");
+                      }}
                     >
                       Profile info
                     </Link>
                     <Link
                       data-testid="statistics"
                       href={"/profile"}
-                      onClick={() => changePage("statistics")}
+                      onClick={() => {
+                        handleChangeMenuExpanded();
+                        changePage("statistics");
+                      }}
                     >
                       Statistics
                     </Link>
@@ -143,7 +153,7 @@ function Header() {
             )}
           </>
         )}
-        {isPageAuth && (
+        {!isPageAuth && (
           <button
             className="hamburger-menu"
             onClick={handleChangeMenuExpanded}

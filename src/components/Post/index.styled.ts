@@ -29,7 +29,7 @@ export const PostArticle = styled.article`
   }
 
   span {
-    font-size: clamp(12px, 1.2vw, 16px);
+    font-size: clamp(12px, 1.5vw, 16px);
   }
 
   label,
@@ -37,9 +37,7 @@ export const PostArticle = styled.article`
     font-size: 14px;
   }
 
-  svg {
-    height: 24px;
-  }
+
 
     &:last-child ${PostFrame} {
     border-bottom: 2px solid var(--border-color);
@@ -91,22 +89,23 @@ export const PostInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1em;
+  gap: 16px;
   height: 24px;
 `;
 
 export const Likes = styled.div`
+
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5em;
+  gap: 8px;
 `;
 
 export const Comments = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5em;
+  gap: 8px;
 `;
 
 export const PostComments = styled.ul`
@@ -129,13 +128,8 @@ export const AddComment = styled.div`
 
   button {
     width: clamp(163px, 40%, 211px);
-    height: 44px;
+    height: clamp(36px, 5vw, 44px);
     font-size: 14px;
   }
-
-  @media (max-width: 350px) {
-    button {
-      height: 36px;
-    }
   }
 `;

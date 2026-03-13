@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: min(375px, 90%);
+  width: min(375px, 100%);
   gap: 24px;
   font-size: 14px;
-  padding: 0 24px 24px 24px;
+  padding: 0 clamp(18px, 1.5vw, 24px) 24px;
 }
 
 .form-header {
@@ -16,22 +16,19 @@
 }
 
 .form-header h1 {
+  text-align: center;
+  width: 221px;
   font-size: 18px;
   height: 28px;
 }
 
 .form-header p {
-  width: 80%;
+  width: 221px;
   text-align: center;
 }
 
-form input {
+.sing-up input {
   height: 48px;
-  width: min(327px, 90vw);
-}
-
-form button {
-  height: 44px;
   width: min(327px, 90vw);
 }
 
@@ -44,6 +41,7 @@ form button {
   font-size: 12px;
   text-align: center;
   color: var(--light-text-color);
+  width: 337px;
 }
 
 .legal-link {
@@ -53,16 +51,6 @@ form button {
 .sing-up + span {
   font-size: 14px;
   line-height: 20px;
-}
-
-@media (max-width: 376px) {
-  .sing-up {
-    gap: 0.8em;
-  }
-
-  .sing-up button {
-    height: 36px;
-  }
 }
 
 .email-warning {
@@ -85,4 +73,10 @@ form button {
   height: 21px;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 376px) {
+  .sing-up button {
+    margin-top: 8px;
+  }
 }

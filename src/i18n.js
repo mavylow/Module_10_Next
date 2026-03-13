@@ -50,7 +50,7 @@ i18next
           whatHappening: "What’s happening?",
           tellEveryone: "Tell everyone",
 
-          likes: "likes",
+          likes: "Likes",
           like_one: "{{count}} like",
           like_other: "{{count}} likes",
           like_zero: "no likes",
@@ -100,7 +100,8 @@ i18next
           description: "Description",
           descriptionPlaceholder: "Write description here...",
           selectFile: "Select a file or drag and drop here",
-          imagePlaceholder: "JPG, PNG or PDF, file size no more than 10MB",
+          imagePlaceholderLong: "JPG, PNG or PDF, file size no more than 10MB",
+          imagePlaceholderShort: "JPG, PNG, no more than 10MB",
           imageMaxSize: "Max allowed size is 10MB",
           create: "Create",
 
@@ -108,8 +109,7 @@ i18next
           max20chars: "Max 20 characters",
           max200chars: "Max 200 characters",
           usernameTooLong: "Username is too long",
-          wrongFileFormat:
-            "Unsupported file format. Please upload JPG, PNG or PDF",
+          wrongFileFormat: "Unsupported file format. Please upload JPG, PNG",
 
           preferences: "Preferences",
           actions: "Actions",
@@ -247,7 +247,9 @@ i18next
           description: "Описание",
           descriptionPlaceholder: "Напишите описание здесь...",
           selectFile: "Выберите файл или перетащите его сюда",
-          imagePlaceholder: "JPG, PNG или PDF, размер файла не более 10 МБ",
+          imagePlaceholderLong: "JPG, PNG или PDF, не более 10 МБ",
+          imagePlaceholderShort: "JPG, PNG, не более 10 МБ",
+
           imageMaxSize: "Максимальный размер файла — 10 МБ",
           create: "Создать",
 
@@ -255,8 +257,7 @@ i18next
           max20chars: "Макс. 20 символов",
           max200chars: "Макс. 200 символов",
           usernameTooLong: "Имя пользователя слишком длинное",
-          wrongFileFormat:
-            "Неподдерживаемый формат файла. Загрузите JPG, PNG или PDF",
+          wrongFileFormat: "Неподдерживаемый формат файла. Загрузите JPG, PNG",
 
           preferences: "Настройки",
           actions: "Действия",
@@ -387,7 +388,8 @@ i18next
           description: "Descrizione",
           descriptionPlaceholder: "Scrivi qui la descrizione...",
           selectFile: "Seleziona un file o trascinalo qui",
-          imagePlaceholder: "JPG, PNG o PDF, dimensione massima 10 MB",
+          imagePlaceholderLong: "JPG, PNG o PDF, max 10 MB",
+          imagePlaceholderShort: "JPG, PNG, max 10 MB",
           imageMaxSize: "Dimensione massima consentita 10 MB",
           create: "Crea",
 
@@ -395,7 +397,7 @@ i18next
           max20chars: "Max 20 caratteri",
           max200chars: "Max 200 caratteri",
           usernameTooLong: "Nome utente troppo lungo",
-          wrongFileFormat: "Formato file non supportato. Carica JPG, PNG o PDF",
+          wrongFileFormat: "Formato file non supportato. Carica JPG, PNG",
 
           preferences: "Preferenze",
           actions: "Azioni",

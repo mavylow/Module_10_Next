@@ -38,7 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div id="root">
               <Global />
               <Header />
-              <div className={`wrapper`}>{children}</div>
+              <div className="wrapper">{children}</div>
               <Footer />
             </div>
           </ContextProvider>

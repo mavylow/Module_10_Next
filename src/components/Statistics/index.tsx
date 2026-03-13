@@ -25,7 +25,8 @@ import {
   getStatisticLikes,
   getStatisticPosts,
 } from "@utils/apiUtil";
-import { ChartStats } from "@components/ChartStats";
+import CommentStats from "@/components/CommentStats";
+import LikeStats from "../LikeStat";
 
 const monthStatInitial: MonthStat = {
   month: 0,
@@ -188,7 +189,7 @@ function Statistics() {
         ) : (
           <>
             {likesStats && (
-              <ChartStats
+              <LikeStats
                 title="Likes"
                 stats={
                   likesStats[`${new Date().getFullYear()}`] || yearStatInitial
@@ -196,7 +197,7 @@ function Statistics() {
               />
             )}
             {commentsStats && (
-              <ChartStats
+              <CommentStats
                 title="Comments"
                 stats={
                   commentsStats[`${new Date().getFullYear()}`] ||

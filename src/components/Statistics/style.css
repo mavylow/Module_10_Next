@@ -31,14 +31,14 @@
 }
 
 .tables.chart .frame {
-  padding-left: 0;
+  padding: 8px 24px 0 0;
 }
 @media (max-width: 900px) {
   .month {
     flex-direction: column;
   }
   .statistics .frame {
-    width: 90vw;
+    width: 93.6vw;
     height: 114px;
   }
 

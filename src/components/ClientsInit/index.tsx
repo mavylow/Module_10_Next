@@ -33,9 +33,12 @@ function ClientsInit({ children }: ClientsInitProps) {
       const { startMockingSocial } = await import(
         "@sidekick-monorepo/internship-backend"
       );
-      await startMockingSocial();
+
+      await startMockingSocial(process.env.NEXT_PUBLIC_BASE_PATH || "");
+
       setReady(true);
     }
+
     enableMocking();
   }, []);
 

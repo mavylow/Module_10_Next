@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -15,16 +19,36 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@app/*": ["src/app/*"],
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@utils/*": ["src/utils/*"],
-      "@store/*": ["src/store/*"],
-      "@slices/*": ["src/slices/*"],
-      "@providers/*": ["src/providers/*"],
-      "@auth/*": ["src/app/(auth)/*"],
-      "@tests/*": ["src/tests/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ],
+      "@slices/*": [
+        "src/slices/*"
+      ],
+      "@providers/*": [
+        "src/providers/*"
+      ],
+      "@auth/*": [
+        "src/app/(auth)/*"
+      ],
+      "@tests/*": [
+        "src/tests/*"
+      ]
     },
     "plugins": [
       {
@@ -38,8 +62,13 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.mts",
-    "src/app/page.js", 
-    "src/components/ClientsInit/**/*"
+    "src/app/page.js",
+    "src/components/ClientsInit/**/*",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "cypress"
+  ],
+  
 }

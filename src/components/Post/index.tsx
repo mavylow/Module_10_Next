@@ -37,15 +37,16 @@ import FrameWrapper from "@components/FrameWrapper";
 import {
   AddComment,
   Comments,
-  Figure,
   Likes,
   PostArticle,
   PostAvatar,
   PostComments,
+  PostFrame,
   PostHeader,
   PostInfo,
   WithoutComment,
 } from "@components/Post/index.styled";
+import Image from "next/image";
 
 interface PostProps {
   post: IPost;
@@ -137,8 +138,8 @@ function Post({ post, onLike }: PostProps) {
   };
 
   return (
-    <PostArticle data-testid="post">
-      <FrameWrapper>
+    <PostArticle data-testid="post" className="post">
+      <PostFrame className="post-frame">
         <WithoutComment>
           <PostHeader>
             <PostAvatar
@@ -157,9 +158,19 @@ function Post({ post, onLike }: PostProps) {
             </time>
           </PostHeader>
           {image && (
-            <Figure>
-              <img src={image} />
-            </Figure>
+            <figure>
+              <Image
+                src={image}
+                alt="post-content image"
+                width={700}
+                height={700}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </figure>
           )}
           <div className="post-text">
             <h3>{title}</h3>
@@ -234,6 +245,7 @@ function Post({ post, onLike }: PostProps) {
               Icon={EditPenIcon}
               value={comment}
               onChange={handleSetComment}
+              postId={id.toString()}
             />
             <Button
               description={t("addAComment")}
@@ -242,7 +254,7 @@ function Post({ post, onLike }: PostProps) {
             />
           </AddComment>
         )}
-      </FrameWrapper>
+      </PostFrame>
     </PostArticle>
   );
 }

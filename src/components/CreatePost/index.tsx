@@ -1,7 +1,7 @@
 "use client";
 
 import "@components/CreatePost/style.css";
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import FrameWrapper from "@components/FrameWrapper";
 import { useFormik } from "formik";
 import Button from "@components/Button";
@@ -19,6 +19,7 @@ import InputMessage from "@components/InputMessage";
 import ErrorWarningIcon from "@/assets/ErrorWarningIcon";
 import DOMPurify from "dompurify";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 const postFormInitial = {
   title: "",
@@ -65,6 +66,7 @@ function CreatePost({ onAdd }: ICreatePostProps) {
   const user = useSelector((state: RootState) => state.auth.user);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const postForm = useFormik<IPostForm>({
     initialValues: postFormInitial,
@@ -74,6 +76,22 @@ function CreatePost({ onAdd }: ICreatePostProps) {
 
   const handleDisplayAddMenu = () => {
     setIsModalOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
   };
 
   const addPost = async (data: IPostForm) => {
@@ -152,7 +170,11 @@ function CreatePost({ onAdd }: ICreatePostProps) {
               <UploadFileIcon />
               <div>
                 <p>{t("selectFile")}</p>
-                <span>{t("imagePlaceholder")}</span>
+                <span>
+                  {isMobile
+                    ? t("imagePlaceholderShort")
+                    : t("imagePlaceholderLong")}
+                </span>
               </div>
             </label>
             <input
@@ -167,8 +189,7 @@ function CreatePost({ onAdd }: ICreatePostProps) {
               <InputMessage
                 Icon={ErrorWarningIcon}
                 status="error"
-                // message={postForm.errors.image}
-                message="error"
+                message={postForm.errors.image as string}
               />
             ) : (
               <InputMessage
@@ -184,7 +205,12 @@ function CreatePost({ onAdd }: ICreatePostProps) {
       <FrameWrapper>
         <div className="create-post">
           <div>
-            <img src={user?.profileImage} alt="profile-image" />
+            <Image
+              src={user?.profileImage}
+              alt="profile-image"
+              width={64}
+              height={64}
+            />
             <span>{t("whatHappening")}</span>
           </div>
 

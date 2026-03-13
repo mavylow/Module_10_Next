@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { vi, describe, expect, it, afterEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import Post from "@/_assets/_components/Post";
+import Post from "@components/Post";
 import { mockPost, mockUser } from "@/tests/consts";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";

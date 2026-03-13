@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach, type Mock } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Statistics from "@/_assets/_components/Statistics";
+import Statistics from "@components/Statistics";
 import { useQuery } from "@tanstack/react-query";
 import { mockStatComments, mockStatLikes, mockStatPosts } from "@/tests/consts";
 

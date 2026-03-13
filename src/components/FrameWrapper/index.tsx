@@ -1,5 +1,3 @@
-"use client";
-
 import type { ReactNode } from "react";
 import { Frame } from "@components/FrameWrapper/index.styled";
 
@@ -8,5 +6,9 @@ interface FrameWrapperProps {
 }
 
 export default function FrameWrapper({ children }: FrameWrapperProps) {
-  return <Frame className="frame">{children}</Frame>;
+  return (
+    <Frame className="frame" data-testid="frame-wrapper">
+      {children}
+    </Frame>
+  );
 }

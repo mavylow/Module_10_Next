@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import { SidebarElement } from "@/_assets/_components/SidebarElement";
+import { SidebarElement } from "@components/SidebarElement";
 import { mockGroup, mockSideBarUser } from "@/tests/consts";
 
 describe("SidebarElement", () => {

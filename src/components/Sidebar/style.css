@@ -1,21 +1,27 @@
 aside .frame {
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 12px;
 }
 
 aside {
-  position: fixed;
-  right: calc(50vw - 700px);
+  position: sticky;
   top: 88px;
+  height: calc(100vh - 88px);
   width: 341px;
   font-size: 16px;
+}
+
+aside section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 aside h3 {
   font-size: 16px;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1450px), (max-height: 910px) {
   aside {
     display: none;
   }

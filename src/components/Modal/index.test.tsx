@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Modal from "@/_assets/_components/Modal";
+import Modal from "@components/Modal";
 import userEvent from "@testing-library/user-event";
 import { PopUpContext } from "@/providers/PopupProvider";
 import type { ReactNode } from "react";
@@ -20,10 +20,9 @@ const mockHandleClose = vi.fn();
 
 const renderModal = (isOpen = true) => {
   const mockContext = {
-    isOpen,
-    handleShowModal: vi.fn(),
     handleCloseModal: mockHandleClose,
   };
+  const mockModalProps = { isOpen, ...modalProps };
   render(
     <PopUpContext.Provider value={{ ...mockContext }}>
       <Modal {...mockModalProps} />
@@ -31,7 +30,8 @@ const renderModal = (isOpen = true) => {
   );
 };
 
-const mockModalProps = {
+const modalProps = {
+  id: 1,
   message: "Modal message",
   status: "success" as const,
 };

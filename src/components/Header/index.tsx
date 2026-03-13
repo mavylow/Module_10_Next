@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { type RootState } from "@/store";
 import { useProfilePage } from "@store/profileStore";
 import { usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
 
 function Header() {
   const [isMobile, setIsMobile] = useState(false);
@@ -31,7 +32,11 @@ function Header() {
 
   useEffect(() => {
     setIsExpanded(false);
-    if (location !== "/signin" && location !== "/signup") {
+    if (
+      location === "/signin" ||
+      location === "/signup" ||
+      !(location === "/" || location === "/profile")
+    ) {
       setIsPageAuth(true);
     } else {
       setIsPageAuth(false);
@@ -64,7 +69,6 @@ function Header() {
   };
 
   const handleNavigate = (url: string) => {
-    console.log(navigate);
     navigate.replace(url);
   };
 
@@ -76,7 +80,7 @@ function Header() {
           " " +
           (isExpanded ? "expanded" : "") +
           " " +
-          (!isPageAuth ? "auth-page" : "")
+          (isPageAuth ? "auth-page" : "")
         }
         data-testid="header"
       >
@@ -84,7 +88,7 @@ function Header() {
           <SidekickLogo />
           <SidekickLogoText />
         </div>
-        {isPageAuth && (
+        {!isPageAuth && (
           <>
             {user ? (
               <nav
@@ -97,14 +101,20 @@ function Header() {
                     <Link
                       data-testid="profile-info"
                       href={"/profile"}
-                      onClick={() => changePage("info")}
+                      onClick={() => {
+                        handleChangeMenuExpanded();
+                        changePage("info");
+                      }}
                     >
                       Profile info
                     </Link>
                     <Link
                       data-testid="statistics"
                       href={"/profile"}
-                      onClick={() => changePage("statistics")}
+                      onClick={() => {
+                        handleChangeMenuExpanded();
+                        changePage("statistics");
+                      }}
                     >
                       Statistics
                     </Link>
@@ -112,10 +122,16 @@ function Header() {
                 ) : (
                   <>
                     <Link href={"/profile"}>
-                      <img
+                      <Image
                         src={user.profileImage}
-                        className="avatar"
                         alt="profile-image"
+                        height={24}
+                        width={24}
+                        style={{
+                          objectFit: "cover",
+                          borderRadius: "50%",
+                        }}
+                        priority={true}
                       />
                     </Link>
                     <Link href={"/profile"}>
@@ -136,18 +152,23 @@ function Header() {
             )}
           </>
         )}
-        {isPageAuth && (
+        {!isPageAuth && (
           <button
             className="hamburger-menu"
             onClick={handleChangeMenuExpanded}
             aria-label="hamburger menu button"
           >
             {user && isExpanded ? (
-              <img
-                key={user?.profileImage}
+              <Image
                 src={user?.profileImage || "/image/default-avatar.webp"}
-                className="avatar"
                 alt="Hide menu profile image"
+                height={24}
+                width={24}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50%",
+                }}
+                loading="lazy"
               />
             ) : (
               <Hamburger />

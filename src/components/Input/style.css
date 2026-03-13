@@ -24,3 +24,7 @@
   font-weight: 700;
   height: 20px;
 }
+
+input {
+  font-family: inherit;
+}

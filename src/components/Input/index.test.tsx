@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import Input, { type FormInputProps } from "@/_assets/_components/Input";
+import Input, { type FormInputProps } from "@components/Input";
 import userEvent from "@testing-library/user-event";
 
 const mockFormikInputProps = {

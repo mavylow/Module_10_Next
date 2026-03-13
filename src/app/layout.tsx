@@ -4,6 +4,7 @@ import Footer from "@components/Footer";
 import { createGlobalStyle } from "styled-components";
 import ClientsInit from "@components/ClientsInit";
 import ContextProvider from "@providers/ContextProvider";
+import { Metadata } from "next";
 
 const Global = createGlobalStyle`
 * {
@@ -17,15 +18,18 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+export const metadata: Metadata = {
+  title: "Sidekick media",
+  description: "Social network from Sidekick",
+  keywords: ["social", "network", "posts", "community"],
+};
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" data-theme="dark">
       <head>
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-        <meta name="description" content="Social network from Sidekick" />
-        <meta name="keywords" content="social, network, posts, community" />
         <meta name="author" content="Sidekick" />
-
         <title>social_media</title>
       </head>
       <body>
@@ -34,7 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <div id="root">
               <Global />
               <Header />
-              {children}
+              <div className="wrapper">{children}</div>
               <Footer />
             </div>
           </ContextProvider>

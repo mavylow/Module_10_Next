@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { vi, describe, expect, it, afterEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import Checkbox from ".";
+import Checkbox from "@components/Checkbox";
 import userEvent from "@testing-library/user-event";
 
 const mockCheckboxProp = {

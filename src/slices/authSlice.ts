@@ -30,7 +30,9 @@ export const signIn = createAsyncThunk(
       );
 
       if (!user || !token) {
+     
         throw new Error("Invalid credentials");
+        
       }
 
       dispatch(
@@ -47,7 +49,7 @@ export const signIn = createAsyncThunk(
 
       dispatch(
         modalSlice.actions.setModal({
-          message: "signInStatus.success",
+          message: "signInStatus.fetchError",
           status: "error",
         })
       );

@@ -8,7 +8,7 @@ import { type AppDispatch, type RootState } from "@/store";
 import { restoreAuth, setUser } from "@slices/authSlice";
 import { setModal } from "@slices/modalSlice";
 import { CircularProgress } from "@mui/material";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 
 export interface IAuthContext {
   user: IUser | null;
@@ -25,7 +25,6 @@ interface AuthProviderProps {
 }
 
 function AuthProvider({ children }: AuthProviderProps) {
-  const navigate = useRouter();
   const location = usePathname();
 
   const { user, isLoading: loading } = useSelector(
@@ -41,7 +40,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     const protectedRoutes = ["/profile"];
     if (!loading && !user && protectedRoutes.includes(location)) {
-      navigate.replace("/");
+      redirect("/");
     }
   }, [user, location, loading]);
 

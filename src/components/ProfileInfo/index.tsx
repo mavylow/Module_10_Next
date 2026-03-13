@@ -20,17 +20,19 @@ import { logOut } from "@/slices/authSlice";
 import { observer } from "mobx-react-lite";
 import theme from "@/store/themeStore";
 import InputMessage from "@components/InputMessage";
-import { Skeleton } from "@mui/material";
+import { MenuItem, Skeleton } from "@mui/material";
 import DOMPurify from "dompurify";
 import { useTranslation } from "react-i18next";
+import Select from "@mui/material/Select";
+import Image from "next/image";
 
 const ProfileInfo = observer(() => {
   const { t, i18n } = useTranslation();
 
   const lngs = {
-    en: { nativeName: t("english") },
-    ru: { nativeName: t("russian") },
-    it: { nativeName: t("italian") },
+    en: { nativeName: "English" },
+    ru: { nativeName: "Русский" },
+    it: { nativeName: "Italiano" },
   } as const;
 
   const IProfileSchema = Yup.object({
@@ -79,7 +81,6 @@ const ProfileInfo = observer(() => {
   };
 
   const changeProfile = (data: IProfileForm) => {
-    console.log(data);
     const sanitizeData = {
       image: DOMPurify.sanitize(data.image || ""),
       username: DOMPurify.sanitize(data?.username || ""),
@@ -99,7 +100,12 @@ const ProfileInfo = observer(() => {
           ) : (
             <>
               <label className="profile-photo" htmlFor="change-profile-photo">
-                <img src={formik.values.image} alt="profile-image" />
+                <Image
+                  src={formik.values.image}
+                  alt="profile-image"
+                  height={64}
+                  width={64}
+                />
                 <h3>
                   {user?.firstName} {user?.secondName}
                 </h3>
@@ -202,17 +208,29 @@ const ProfileInfo = observer(() => {
           </div>
           <div className="language">
             <div className="language">
-              <select
+              <Select
                 id="language-select"
                 value={i18n.language}
                 onChange={(e) => i18n.changeLanguage(e.target.value)}
+                size="small"
+                sx={{
+                  border: "1px solid var(--border-color)",
+                  color: "var(--text-color)",
+                  backgroundColor: "var(--background-main)",
+                  borderRadius: "8px",
+                  minWidth: "120px",
+
+                  "& .MuiSelect-icon": {
+                    color: "var(--light-text-color)",
+                  },
+                }}
               >
                 {Object.keys(lngs).map((lng) => (
-                  <option key={lng} value={lng}>
+                  <MenuItem key={lng} value={lng}>
                     {lngs[lng as keyof typeof lngs].nativeName}
-                  </option>
+                  </MenuItem>
                 ))}
-              </select>
+              </Select>
             </div>
           </div>
         </section>

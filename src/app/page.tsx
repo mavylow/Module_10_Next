@@ -34,8 +34,7 @@ function Home() {
 
   return (
     <Suspense fallback={<Fallback />}>
-      <main className="home">
-        {user && <Sidebar />}
+      <main className={`home ${user && "auth"}`}>
         {user && <CreatePost onAdd={handleRefetch} />}
         {sortedPosts?.map((post) => (
           <Post
@@ -46,6 +45,7 @@ function Home() {
           />
         ))}
       </main>
+      {user && <Sidebar />}
     </Suspense>
   );
 }
@@ -55,7 +55,7 @@ const Fallback = () => {
     <main className="home">
       <Box
         sx={{
-          width: "100%",
+          width: "min(700px, 100vw)",
           maxWidth: 800,
           mx: "auto",
           p: "1em",
@@ -65,7 +65,6 @@ const Fallback = () => {
         <Box sx={{ mb: 3 }}>
           <Skeleton
             variant="rectangular"
-            width="100%"
             height={100}
             sx={{ bgcolor: "var(--border-color)" }}
           />

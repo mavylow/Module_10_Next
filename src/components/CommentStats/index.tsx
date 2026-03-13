@@ -25,7 +25,8 @@ const MONTH_NAMES = [
   "dec",
 ];
 
-export function ChartStats({ title, stats }: ITableStats) {
+function CommentStats({ title, stats }: ITableStats) {
+  const maxCount = Math.max(...stats.map((item) => item.count), 0);
   const { t } = useTranslation();
   return (
     <div className="table-statistics">
@@ -37,9 +38,10 @@ export function ChartStats({ title, stats }: ITableStats) {
           ]}
           yAxis={[
             {
+              disableLine: true,
               tickMinStep: 1,
               min: 0,
-              max: 8,
+              max: maxCount < 10 ? 10 : maxCount,
             },
           ]}
           series={[
@@ -49,16 +51,20 @@ export function ChartStats({ title, stats }: ITableStats) {
             },
           ]}
           grid={{ horizontal: true }}
-          height={448}
+          height={400}
           sx={{
             "& .MuiChartsAxis-root line": {
-              stroke: "var(--text-color)",
+              stroke: "var(--light-text-color)",
             },
             "& .MuiChartsAxis-root path": {
-              stroke: "var(--text-color)",
+              stroke: "var(--light-text-color)",
             },
             "& .MuiChartsAxis-root text": {
-              fill: "var(--text-color)",
+              fill: "var(--light-text-color)",
+            },
+
+            "& .MuiChartsGrid-horizontalLine": {
+              stroke: "var(--light-text-color)",
             },
           }}
         />
@@ -66,3 +72,5 @@ export function ChartStats({ title, stats }: ITableStats) {
     </div>
   );
 }
+
+export default CommentStats;

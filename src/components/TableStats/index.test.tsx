@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import TableStats from "@/_assets/_components/TableStats";
+import TableStats from "@components/TableStats";
 
 const mockStats = [
   { month: 0, count: 10, previousCount: 8 },

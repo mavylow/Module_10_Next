@@ -1,25 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IModal {
+  id: number;
+  isOpen: boolean;
   message: string;
   status: "error" | "warning" | "success" | null;
 }
 
-const initialState: IModal = {
+const initialState: IModal[] = [{
+  id: 1,
+  isOpen: false,
   message: "",
   status: null,
-};
+}];
 
 export const modalSlice = createSlice({
   name: "modal",
   initialState,
   reducers: {
     setModal(state, action) {
-      state.message = action.payload.message;
-      state.status = action.payload.status;
-    }
+      const newModal = {message: action.payload.message, status: action.payload.status, isOpen: true, id: state.length+1}
+      state.push(newModal);
+      console.log(state.filter((m)=>m.isOpen))
+    },
+    setIsOpen: (state, action) => {
+      const index = state.findIndex((m) => m.id === action.payload.id);
+      if (index !== -1) {
+        state[index].isOpen = action.payload.isOpen;
+      }
+    },
+
+    removeModal: (state, action) => {
+      return state.filter((m) => m.id !== action.payload);
+    },
+    
   },
 });
 
 export default modalSlice.reducer
-export const {setModal} = modalSlice.actions
+export const {setModal, setIsOpen, removeModal} = modalSlice.actions

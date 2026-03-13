@@ -7,6 +7,7 @@ import { getGroups, getSuggested } from "@utils/apiUtil";
 import type { IGroup, ISidebarUser } from "@/interfaces";
 import { useQuery } from "@tanstack/react-query";
 import { Box, Skeleton } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Sidebar() {
   const { isLoading: isGroupsLoading, data: groups } = useQuery<

@@ -22,7 +22,7 @@ import {
 import ChevronIconExpanded from "@/assets/ChevronIconExpanded";
 import HeartLikeIcon from "@/assets/HeartLikeIcon";
 import HeartDislikeIcon from "@/assets/HeartDislikeIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import {
   useMutation,
@@ -47,6 +47,7 @@ import {
   WithoutComment,
 } from "@components/Post/index.styled";
 import Image from "next/image";
+import { setModal } from "@/slices/modalSlice";
 
 interface PostProps {
   post: IPost;
@@ -58,6 +59,7 @@ function Post({ post, onLike }: PostProps) {
 
   const { id, authorId, title, content, image, likedByUsers, creationDate } =
     post;
+  const dispatch = useDispatch();
   const date = formattedDate(creationDate);
   const user = useSelector((state: RootState) => state.auth.user);
   const queryClient = useQueryClient();
@@ -89,6 +91,9 @@ function Post({ post, onLike }: PostProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["post"] });
       onLike();
+    },
+    onError: () => {
+      dispatch(setModal({ message: "unauthorized", status: "warning" }));
     },
   });
 

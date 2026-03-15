@@ -129,6 +129,7 @@ const ProfileInfo = observer(() => {
             Icon={PersonIcon}
             value={formik.values.username}
             onChange={formik.handleChange}
+            autoComplete="username"
           />
 
           {formik.errors.username ? (
@@ -154,6 +155,7 @@ const ProfileInfo = observer(() => {
             placeholder={t("changeEmail")}
             Icon={MailIcon}
             value={formik.values.email}
+            autoComplete="email"
             onChange={formik.handleChange}
           />
           {formik.errors.email ? (

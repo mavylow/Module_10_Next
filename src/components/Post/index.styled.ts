@@ -99,6 +99,7 @@ export const Likes = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  min-width: fit-content
 `;
 
 export const Comments = styled.div`

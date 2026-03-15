@@ -67,12 +67,17 @@
 }
 .password-icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 13px;
+  right: 12px;
   width: 16px;
   height: 21px;
   display: flex;
   align-items: center;
+  z-index: 1001;
+}
+
+.password-input {
+  position: relative;
 }
 
 @media (max-width: 376px) {

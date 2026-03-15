@@ -152,10 +152,7 @@ i18next
           logOutStatus: {
             success: "Logged out successfully",
           },
-
-          english: "English",
-          russian: "Russian",
-          italian: "Italian",
+          unauthorized: "Authentication required",
         },
       },
 
@@ -300,6 +297,7 @@ i18next
           logOutStatus: {
             success: "Вы вышли из системы",
           },
+          unauthorized: "Требуется аутентификация",
         },
       },
 
@@ -421,13 +419,13 @@ i18next
           },
 
           signInStatus: {
-            success: "Accesso effettuato con successo",
+            success: "Accesso con successo",
             error: "Autenticazione fallita",
             fetchError: "Errore nel recupero dei dati",
           },
 
           signUpStatus: {
-            success: "Registrazione completata con successo",
+            success: "Registrazione successo",
             error: "Registrazione fallita",
           },
 
@@ -438,8 +436,9 @@ i18next
           },
 
           logOutStatus: {
-            success: "Disconnessione effettuata con successo",
+            success: "Disconnessione successo",
           },
+          unauthorized: "Richiesta autenticazione",
         },
       },
     },

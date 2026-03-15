@@ -28,6 +28,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+.toggle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .tables.chart .frame {

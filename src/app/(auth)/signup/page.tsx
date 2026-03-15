@@ -109,23 +109,24 @@ function SignUp() {
           </div>
 
           <div className="input-container">
-            <div
-              data-testid="password-icon"
-              className="password-icon"
-              onClick={() => setIsPasswordOpen((p) => !p)}
-            >
-              {isPasswordOpen ? <EyeCrossedIcon /> : <EyeOpenIcon />}
+            <div className="password-input">
+              <div
+                data-testid="password-icon"
+                className="password-icon"
+                onClick={() => setIsPasswordOpen((p) => !p)}
+              >
+                {isPasswordOpen ? <EyeCrossedIcon /> : <EyeOpenIcon />}
+              </div>
+
+              <Input
+                id="password"
+                description={t("password")}
+                placeholder={t("passwordPlaceholder")}
+                type={isPasswordOpen ? "text" : "password"}
+                Icon={EyeOpenIcon}
+                register={register}
+              />
             </div>
-
-            <Input
-              id="password"
-              description={t("password")}
-              placeholder={t("passwordPlaceholder")}
-              type={isPasswordOpen ? "text" : "password"}
-              Icon={EyeOpenIcon}
-              register={register}
-            />
-
             {showPasswordValidation &&
               (errors.password ? (
                 <InputMessage

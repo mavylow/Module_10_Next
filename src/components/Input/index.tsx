@@ -37,10 +37,7 @@ export default function Input(props: InputProps | FormInputProps) {
 
     return (
       <div className="input-wrapper">
-        <label
-          htmlFor={postId ? "input" + id + postId : "input" + id}
-          className="default-label"
-        >
+        <label htmlFor={id} className="default-label">
           <Icon />
           {description}
         </label>
@@ -48,7 +45,7 @@ export default function Input(props: InputProps | FormInputProps) {
         <input
           data-testid="input"
           className="default-input"
-          id={postId ? "input" + id + postId : "input" + id}
+          id={id}
           placeholder={placeholder}
           type={type}
           aria-describedby="username-success username-error username-warning"
@@ -71,10 +68,7 @@ export default function Input(props: InputProps | FormInputProps) {
     } = props;
     return (
       <div className="input-wrapper">
-        <label
-          htmlFor={"input" + postId ? id + postId : id}
-          className="default-label"
-        >
+        <label htmlFor={id} className="default-label">
           <Icon />
           {description}
         </label>
@@ -82,7 +76,7 @@ export default function Input(props: InputProps | FormInputProps) {
         <input
           data-testid="input"
           className="default-input"
-          id={"input" + postId ? id + postId : id}
+          id={id}
           name={name}
           placeholder={placeholder}
           type={type}

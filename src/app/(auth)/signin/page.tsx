@@ -97,23 +97,25 @@ export default function SignIn() {
             )}
           </div>
           <div className="input-container">
-            <div
-              data-testid="password-icon"
-              className="password-icon"
-              onClick={handleShowPassword}
-            >
-              {isPasswordOpen ? <EyeCrossedIcon /> : <EyeOpenIcon />}
+            <div className="password-input">
+              <div
+                data-testid="password-icon"
+                className="password-icon"
+                onClick={handleShowPassword}
+              >
+                {isPasswordOpen ? <EyeCrossedIcon /> : <EyeOpenIcon />}
+              </div>
+              <Input
+                id="password"
+                description={t("password")}
+                name="password"
+                placeholder={t("passwordPlaceholder")}
+                type={isPasswordOpen ? "text" : "password"}
+                Icon={EyeOpenIcon}
+                value={form.values.password}
+                onChange={form.handleChange}
+              />
             </div>
-            <Input
-              id="password"
-              description={t("password")}
-              name="password"
-              placeholder={t("passwordPlaceholder")}
-              type={isPasswordOpen ? "text" : "password"}
-              Icon={EyeOpenIcon}
-              value={form.values.password}
-              onChange={form.handleChange}
-            />
             {form.values.password && (
               <>
                 {form.errors.password ? (

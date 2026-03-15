@@ -101,7 +101,11 @@ const ProfileInfo = observer(() => {
             <>
               <label className="profile-photo" htmlFor="change-profile-photo">
                 <Image
-                  src={formik.values.image}
+                  src={
+                    formik.values.image.includes("blob")
+                      ? formik.values.image
+                      : process.env.NEXT_PUBLIC_BASE_PATH + formik.values.image
+                  }
                   alt="profile-image"
                   height={64}
                   width={64}

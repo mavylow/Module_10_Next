@@ -148,7 +148,7 @@ function Post({ post, onLike }: PostProps) {
         <WithoutComment>
           <PostHeader>
             <PostAvatar
-              src={author?.profileImage}
+              src={process.env.NEXT_PUBLIC_BASE_PATH + author?.profileImage}
               alt={`Profile picture of ${author?.username}`}
               className="post-avatar"
               loading="lazy"
@@ -165,7 +165,11 @@ function Post({ post, onLike }: PostProps) {
           {image && (
             <figure>
               <Image
-                src={image}
+                src={
+                  image.includes("blob")
+                    ? image
+                    : process.env.NEXT_PUBLIC_BASE_PATH + image
+                }
                 alt="post-content image"
                 width={700}
                 height={700}

@@ -96,7 +96,7 @@ export const addPostsAxios = async (newPost: string) => {
 };
 
 export const loadUser = async (userId: number) => {
-  const user = await fetchRESTData(`api/users/${userId}`, "GET");
+  const user = await fetchRESTData(`/api/users/${userId}`, "GET");
   return user;
 };
 
@@ -148,7 +148,7 @@ export const deleteComment = async (commentId: number) => {
 };
 
 export const addComment = async (commentData: string) => {
-  await fetchRESTData("api/comments", "POST", commentData);
+  await fetchRESTData("/api/comments", "POST", commentData);
 };
 
 export const likePost = async (postId: number) => {
@@ -188,7 +188,7 @@ export const likePost = async (postId: number) => {
 };
 
 export const dislikePost = async (postId: number) => {
-  await fetchRESTData("api/dislike", "POST", JSON.stringify({ postId }));
+  await fetchRESTData("/api/dislike", "POST", JSON.stringify({ postId }));
 };
 
 export const getSuggested = async () => {

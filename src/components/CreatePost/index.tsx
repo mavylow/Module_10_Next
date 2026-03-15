@@ -206,7 +206,7 @@ function CreatePost({ onAdd }: ICreatePostProps) {
         <div className="create-post">
           <div>
             <Image
-              src={user?.profileImage}
+              src={process.env.NEXT_PUBLIC_BASE_PATH + user?.profileImage}
               alt="profile-image"
               width={64}
               height={64}

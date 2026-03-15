@@ -73,6 +73,7 @@ export default function SignIn() {
               Icon={MailIcon}
               value={form.values.email}
               onChange={form.handleChange}
+              autoComplete="email"
             />
             {form.values.email && (
               <>
@@ -106,13 +107,14 @@ export default function SignIn() {
                 {isPasswordOpen ? <EyeCrossedIcon /> : <EyeOpenIcon />}
               </div>
               <Input
-                id="password"
+                id="current-password"
                 description={t("password")}
                 name="password"
                 placeholder={t("passwordPlaceholder")}
                 type={isPasswordOpen ? "text" : "password"}
                 Icon={EyeOpenIcon}
                 value={form.values.password}
+                autoComplete="current-password"
                 onChange={form.handleChange}
               />
             </div>

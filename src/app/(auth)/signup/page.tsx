@@ -84,6 +84,7 @@ function SignUp() {
               placeholder={t("emailPlaceholder")}
               type="email"
               Icon={MailIcon}
+              autoComplete="email"
               register={register}
             />
 
@@ -125,6 +126,7 @@ function SignUp() {
                 type={isPasswordOpen ? "text" : "password"}
                 Icon={EyeOpenIcon}
                 register={register}
+                autoComplete="new-password"
               />
             </div>
             {showPasswordValidation &&

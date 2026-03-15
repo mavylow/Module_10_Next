@@ -152,6 +152,7 @@ i18next
           logOutStatus: {
             success: "Logged out successfully",
           },
+          unauthorized: "Authentication required",
         },
       },
 
@@ -296,6 +297,7 @@ i18next
           logOutStatus: {
             success: "Вы вышли из системы",
           },
+          unauthorized: "Требуется аутентификация",
         },
       },
 
@@ -436,6 +438,7 @@ i18next
           logOutStatus: {
             success: "Disconnessione successo",
           },
+          unauthorized: "Richiesta autenticazione",
         },
       },
     },

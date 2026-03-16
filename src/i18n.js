@@ -119,7 +119,7 @@ i18next
           changeProfilePhoto: "Change profile photo",
           username: "Username",
           usernamePlaceholder: "Enter your username",
-          saveChanges: "Save changes",
+          saveChanges: "Save Profile changes",
           profileInfo: "Profile Info",
           statistics: "Statistics",
 
@@ -270,7 +270,7 @@ i18next
           changeProfilePhoto: "Изменить фото профиля",
           username: "Имя пользователя",
           usernamePlaceholder: "Введите имя пользователя",
-          saveChanges: "Сохранить изменения",
+          saveChanges: "Сохранить изменения Профиля",
           profileInfo: "Профиль",
           statistics: "Статистика",
 
@@ -417,7 +417,7 @@ i18next
           changeProfilePhoto: "Cambia foto profilo",
           username: "Nome utente",
           usernamePlaceholder: "Inserisci nome utente",
-          saveChanges: "Salva modifiche",
+          saveChanges: "Salva Profilo modifiche",
           profileInfo: "Info profilo",
           statistics: "Statistiche",
 

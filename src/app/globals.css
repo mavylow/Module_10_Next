@@ -57,6 +57,7 @@
   align-items: center;
   background-color: var(--background-root);
   color: var(--text-color);
+  cursor: default;
 }
 
 body {
@@ -71,11 +72,12 @@ main {
   flex-direction: column;
   width: min(700px, 100%);
   position: relative;
-  padding: clamp(10px, 2vw, 20px) 0;
+  padding: clamp(10px, 2vw, 24px) 0;
 }
 
 a {
   color: var(--text-color);
+  cursor: pointer;
 }
 
 .input-wrapper {

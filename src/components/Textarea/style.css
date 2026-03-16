@@ -3,6 +3,7 @@
   border: 1px solid var(--border-color);
   padding: 0.5em;
   color: var(--text-color);
+  font-size: 14px;
 }
 
 .default-textarea:focus {

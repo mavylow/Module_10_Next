@@ -51,7 +51,7 @@ function CommentStats({ title, stats }: ITableStats) {
             },
           ]}
           grid={{ horizontal: true }}
-          height={400}
+          height={438}
           sx={{
             "& .MuiChartsAxis-root line": {
               stroke: "var(--light-text-color)",

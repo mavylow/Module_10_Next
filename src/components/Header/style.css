@@ -202,6 +202,8 @@ header a {
   justify-content: space-between;
   align-items: center;
   gap: 7px;
+  cursor: pointer;
+  position: relative;
 }
 
 .svg-icon {
@@ -228,8 +230,8 @@ header a {
     width: 24px;
   }
   .svg-hamburger {
-    height: 14px;
-    width: 14px;
+    height: 18px;
+    width: 18px;
   }
   .svg-icon {
     height: 12px;

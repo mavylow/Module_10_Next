@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import {Frame} from "@components/FrameWrapper/index.styled";
+import { Frame } from "@components/FrameWrapper/index.styled";
 
 export const PostFrame = styled(Frame)`
   display: flex;
   flex-direction: column;
   gap: 16px;
   border-bottom: none;
-
 `;
 
 export const PostArticle = styled.article`
@@ -37,9 +36,7 @@ export const PostArticle = styled.article`
     font-size: 14px;
   }
 
-
-
-    &:last-child ${PostFrame} {
+  &:last-child ${PostFrame} {
     border-bottom: 2px solid var(--border-color);
   }
 
@@ -56,8 +53,6 @@ export const WithoutComment = styled.div`
   gap: 16px;
 `;
 
-
-
 export const PostHeader = styled.div`
   display: grid;
   grid-template-rows: 24px 1fr;
@@ -65,7 +60,7 @@ export const PostHeader = styled.div`
 
   h2,
   time {
-    padding-left: min(1em, 3%);
+    padding-left: min(12px, 3%);
     align-self: center;
   }
 
@@ -84,7 +79,6 @@ export const PostAvatar = styled.img`
   grid-row: 1 / span 2;
 `;
 
-
 export const PostInfo = styled.div`
   display: flex;
   flex-direction: row;
@@ -94,12 +88,12 @@ export const PostInfo = styled.div`
 `;
 
 export const Likes = styled.div`
-
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  min-width: fit-content
+  min-width: fit-content;
+  cursor: pointer;
 `;
 
 export const Comments = styled.div`
@@ -107,6 +101,10 @@ export const Comments = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+
+  span {
+    cursor: pointer;
+  }
 `;
 
 export const PostComments = styled.ul`

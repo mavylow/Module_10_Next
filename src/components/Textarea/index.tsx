@@ -8,7 +8,6 @@ interface TextareaProps {
   placeholder: string;
   Icon: ComponentType;
   value: string;
-  postId?: string;
   onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
@@ -20,14 +19,10 @@ function Textarea({
   Icon,
   value,
   onChange,
-  postId,
 }: TextareaProps) {
   return (
     <div className="input-wrapper">
-      <label
-        htmlFor={"textarea" + postId ? id + postId : id}
-        className="default-label"
-      >
+      <label htmlFor={id} className="default-label">
         <Icon />
         {description}
       </label>
@@ -35,7 +30,7 @@ function Textarea({
       <textarea
         data-testid="textarea"
         className="default-textarea"
-        id={"textarea" + postId ? id + postId : id}
+        id={id}
         name={name}
         placeholder={placeholder}
         onChange={onChange}

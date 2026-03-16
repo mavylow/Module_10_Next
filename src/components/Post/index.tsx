@@ -197,14 +197,26 @@ function Post({ post, onLike }: PostProps) {
                 />
               )}
 
-              <span>{t("like", { count: likedByUsers.length })}</span>
+              <span
+                onClick={() =>
+                  handleLikeAndDislike(
+                    user && likedByUsers?.some((u) => u.email === user.email)
+                      ? "dislike"
+                      : "like"
+                  )
+                }
+              >
+                {t("like", { count: likedByUsers.length })}
+              </span>
             </Likes>
             <Comments>
               <CommentIcon />
               {user ? (
                 <>
                   {comments ? (
-                    <span>{t("comment", { count: comments.length })}</span>
+                    <span onClick={handleExpand}>
+                      {t("comment", { count: comments.length })}
+                    </span>
                   ) : (
                     <Skeleton variant="text" width={10} />
                   )}

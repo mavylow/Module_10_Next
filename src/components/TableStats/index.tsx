@@ -33,6 +33,14 @@ function TableStats({ title, stats }: ITableStats) {
       <h2> {t(title.toLocaleLowerCase())} </h2>
       <FrameWrapper>
         <table>
+          <thead>
+            <tr>
+              <th>{t("month")}</th>
+              <th>{t("current")}</th>
+              <th>{t("previous")}</th>
+            </tr>
+          </thead>
+
           <tbody>
             {stats &&
               stats.map((m: MonthStat) => (

@@ -70,6 +70,7 @@
   resize: horizontal;
   max-width: min(575px, 100%);
   min-width: min(327px, 100%);
+  font-size: 16px;
 }
 
 .edit-profile button {

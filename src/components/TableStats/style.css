@@ -5,9 +5,18 @@ table {
 tr:last-child td {
   border-bottom: none;
 }
+table {
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
 
 td {
   border-bottom: 1px solid var(--border-color);
+}
+
+thead th {
+  text-align: start;
+  padding-bottom: 5px;
 }
 
 .table-statistics {
@@ -19,9 +28,10 @@ td {
 .table-statistics .frame {
   width: min(575px, 40vw);
   height: fit-content;
+  padding: 24px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 975px) {
   .table-statistics .frame {
     width: 93.6vw;
   }

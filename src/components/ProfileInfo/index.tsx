@@ -94,7 +94,7 @@ const ProfileInfo = observer(() => {
     <form onSubmit={formik.handleSubmit} className="profile-info">
       <section className="edit-profile">
         <h2>{t("editProfile")}</h2>
-        <div>
+        <div className="change-avatar">
           {isLoading ? (
             <ProfilePhotoSkeleton />
           ) : (
@@ -220,11 +220,12 @@ const ProfileInfo = observer(() => {
                 onChange={(e) => i18n.changeLanguage(e.target.value)}
                 size="small"
                 sx={{
-                  border: "1px solid var(--border-color)",
                   color: "var(--text-color)",
                   backgroundColor: "var(--background-main)",
-                  borderRadius: "8px",
                   minWidth: "120px",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "var(--border-color)",
+                  },
 
                   "& .MuiSelect-icon": {
                     color: "var(--light-text-color)",

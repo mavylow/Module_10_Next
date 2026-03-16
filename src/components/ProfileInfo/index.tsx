@@ -25,6 +25,7 @@ import DOMPurify from "dompurify";
 import { useTranslation } from "react-i18next";
 import Select from "@mui/material/Select";
 import Image from "next/image";
+import { t } from "i18next";
 
 const ProfileInfo = observer(() => {
   const { t, i18n } = useTranslation();
@@ -268,7 +269,7 @@ const ProfilePhotoSkeleton = () => {
         sx={{ bgcolor: "var(--border-color)" }}
       />
 
-      <span> Change profile photo</span>
+      <span> {t("changeProfilePhoto")}</span>
     </div>
   );
 };

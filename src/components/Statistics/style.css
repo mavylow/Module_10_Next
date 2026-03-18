@@ -14,8 +14,9 @@
 
 .statistics .frame {
   width: min(380px, 25vw);
-  height: 172px;
-  padding: clamp(12px, 1.2vw, 24px);
+  height: fit-content;
+  padding: clamp(12px, 2vw, 24px);
+  border: 1px solid var(--border-color);
 }
 
 .tables {
@@ -28,22 +29,38 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .tables.chart .frame {
-  padding: 8px 24px 0 0;
+  height: 448px;
+  padding: 10px 24px 0 0;
 }
-@media (max-width: 900px) {
+
+@media (max-width: 975px) {
   .month {
     flex-direction: column;
   }
   .statistics .frame {
     width: 93.6vw;
-    height: 114px;
   }
 
   .tables {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .toggle-view {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
   }
 }

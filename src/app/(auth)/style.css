@@ -6,7 +6,7 @@
   width: min(375px, 100%);
   gap: 24px;
   font-size: 14px;
-  padding: 0 clamp(18px, 1.5vw, 24px) 24px;
+  padding: 0 clamp(18px, 5.5vw, 24px) 24px;
 }
 
 .form-header {
@@ -29,7 +29,7 @@
 
 .sing-up input {
   height: 48px;
-  width: min(327px, 90vw);
+  width: min(100%, 90vw);
 }
 
 .legal-link,
@@ -67,12 +67,20 @@
 }
 .password-icon {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 13px;
+  right: 12px;
   width: 16px;
   height: 21px;
   display: flex;
   align-items: center;
+  z-index: 1001;
+}
+.sing-up .input-wrapper {
+  width: min(327px, 90vw);
+}
+
+.password-input {
+  position: relative;
 }
 
 @media (max-width: 376px) {

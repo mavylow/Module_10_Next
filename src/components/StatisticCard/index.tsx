@@ -22,7 +22,7 @@ function StatisticCard({ title, count, prev }: IStatisticCard) {
         <h3>{t(title).toLocaleLowerCase()}</h3>
         <p>{count}</p>
         <small data-testid="monthStat">
-          +{percent}% {t("monthStat")}
+          {percent > 0 ? "+" + percent : percent}% {t("monthStat")}
         </small>
       </div>
     </FrameWrapper>

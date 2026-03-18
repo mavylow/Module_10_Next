@@ -7,6 +7,8 @@ import type { IComment, ILike, IPost, MonthStat } from "@/interfaces";
 import StatisticCard from "@components/StatisticCard";
 import {
   Box,
+  MenuItem,
+  Select,
   Skeleton,
   Table,
   TableBody,
@@ -47,6 +49,9 @@ type ITabView = "table" | "chart";
 function Statistics() {
   const { t } = useTranslation();
   const [tabView, setTabView] = useState<ITabView>("table");
+  // const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState(2025);
+  console.log(year);
   const { data: posts, isLoading: isPostsLoading } = useQuery<IPost[]>({
     queryKey: ["posts"],
     queryFn: () => getStatisticPosts(),
@@ -154,13 +159,47 @@ function Statistics() {
       </div>
 
       <div className="toggle-view">
-        <Checkbox
-          onToggle={handleToggle}
-          id="chart-view"
-          description={
-            tabView === "chart" ? t("switchStatTables") : t("switchStatCharts")
-          }
-        />
+        <div className="toggle-container">
+          <Checkbox
+            onToggle={handleToggle}
+            id="chart-view"
+            description={
+              tabView === "chart"
+                ? t("switchStatTables")
+                : t("switchStatCharts")
+            }
+          />
+        </div>
+        <Select
+          value={year}
+          onChange={(e) => {
+            setYear(e.target.value);
+          }}
+          size="small"
+          sx={{
+            color: "var(--text-color)",
+            backgroundColor: "var(--background-main)",
+            minWidth: "120px",
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: "var(--border-color)",
+            },
+
+            "& .MuiSelect-icon": {
+              color: "var(--light-text-color)",
+            },
+          }}
+        >
+          {Array.from(
+            new Set([
+              ...Object.keys(likesStats || {}),
+              ...Object.keys(commentsStats || {}),
+            ])
+          ).map((year) => (
+            <MenuItem key={year} value={year}>
+              {year}
+            </MenuItem>
+          ))}
+        </Select>
       </div>
 
       <div className={`tables ${tabView}`}>
@@ -169,18 +208,13 @@ function Statistics() {
             {likesStats && (
               <TableStats
                 title="Likes"
-                stats={
-                  likesStats[`${new Date().getFullYear()}`] || yearStatInitial
-                }
+                stats={likesStats[`${year}`] || yearStatInitial}
               />
             )}
             {commentsStats && (
               <TableStats
                 title="Comments"
-                stats={
-                  commentsStats[`${new Date().getFullYear()}`] ||
-                  yearStatInitial
-                }
+                stats={commentsStats[`${year}`] || yearStatInitial}
               />
             )}
           </>
@@ -189,18 +223,13 @@ function Statistics() {
             {likesStats && (
               <LikeStats
                 title="Likes"
-                stats={
-                  likesStats[`${new Date().getFullYear()}`] || yearStatInitial
-                }
+                stats={likesStats[`${year}`] || yearStatInitial}
               />
             )}
             {commentsStats && (
               <CommentStats
                 title="Comments"
-                stats={
-                  commentsStats[`${new Date().getFullYear()}`] ||
-                  yearStatInitial
-                }
+                stats={commentsStats[`${year}`] || yearStatInitial}
               />
             )}
           </>

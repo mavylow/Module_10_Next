@@ -21,7 +21,6 @@ export const modalSlice = createSlice({
     setModal(state, action) {
       const newModal = {message: action.payload.message, status: action.payload.status, isOpen: true, id: state.length+1}
       state.push(newModal);
-      console.log(state.filter((m)=>m.isOpen))
     },
     setIsOpen: (state, action) => {
       const index = state.findIndex((m) => m.id === action.payload.id);

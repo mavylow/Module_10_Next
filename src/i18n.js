@@ -2,6 +2,7 @@
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import { current } from "@reduxjs/toolkit";
 
 i18next
   .use(initReactI18next)
@@ -33,9 +34,9 @@ i18next
             "Enter your email and password to {{sign}} into this app",
 
           emailNotValid: "Email is not valid",
-          shortPassword: "Password must be at least 8 characters",
-          longPassword: "Password cannot exceed 14 characters",
-          passwordContainNumber: "Password must contain at least one number",
+          shortPassword: "Must be at least 8 characters",
+          longPassword: "Cannot exceed 14 characters",
+          passwordContainNumber: "At least one number",
           strongPassword: "Your password is strong",
 
           dontHaveAccount: "Don't have an account?",
@@ -118,7 +119,7 @@ i18next
           changeProfilePhoto: "Change profile photo",
           username: "Username",
           usernamePlaceholder: "Enter your username",
-          saveChanges: "Save changes",
+          saveChanges: "Save Profile changes",
           profileInfo: "Profile Info",
           statistics: "Statistics",
 
@@ -152,10 +153,13 @@ i18next
           logOutStatus: {
             success: "Logged out successfully",
           },
+          unauthorized: "Authentication required",
 
-          english: "English",
-          russian: "Russian",
-          italian: "Italian",
+          toHome: "To home",
+
+          month: "month",
+          current: "current",
+          previous: "previous",
         },
       },
 
@@ -178,9 +182,9 @@ i18next
             "Введите вашу почту и пароль, чтобы {{sign}} в это приложение",
 
           emailNotValid: "Email некорректный",
-          shortPassword: "Пароль должен содержать минимум 8 символов",
-          longPassword: "Пароль не может превышать 14 символов",
-          passwordContainNumber: "Пароль должен содержать хотя бы одну цифру",
+          shortPassword: "Должен содержать минимум 8 символов",
+          longPassword: "Не может превышать 14 символов",
+          passwordContainNumber: "Должен содержать хотя бы одну цифру",
           strongPassword: "Ваш пароль надежный",
 
           dontHaveAccount: "Нет аккаунта?",
@@ -266,7 +270,7 @@ i18next
           changeProfilePhoto: "Изменить фото профиля",
           username: "Имя пользователя",
           usernamePlaceholder: "Введите имя пользователя",
-          saveChanges: "Сохранить изменения",
+          saveChanges: "Сохранить изменения Профиля",
           profileInfo: "Профиль",
           statistics: "Статистика",
 
@@ -300,6 +304,13 @@ i18next
           logOutStatus: {
             success: "Вы вышли из системы",
           },
+          unauthorized: "Требуется аутентификация",
+
+          toHome: "На главную",
+
+          month: "Месяц",
+          current: "Текущий",
+          previous: "Предыдущий",
         },
       },
 
@@ -322,9 +333,9 @@ i18next
             "Inserisci la tua email e password per {{sign}} in questa app",
 
           emailNotValid: "L'email non è valida",
-          shortPassword: "La password deve contenere almeno 8 caratteri",
-          longPassword: "La password non può superare i 14 caratteri",
-          passwordContainNumber: "La password deve contenere almeno un numero",
+          shortPassword: "Deve contenere almeno 8 caratteri",
+          longPassword: "Non può superare i 14 caratteri",
+          passwordContainNumber: "Deve contenere almeno un numero",
           strongPassword: "La tua password è sicura",
 
           dontHaveAccount: "Non hai un account?",
@@ -406,7 +417,7 @@ i18next
           changeProfilePhoto: "Cambia foto profilo",
           username: "Nome utente",
           usernamePlaceholder: "Inserisci nome utente",
-          saveChanges: "Salva modifiche",
+          saveChanges: "Salva Profilo modifiche",
           profileInfo: "Info profilo",
           statistics: "Statistiche",
 
@@ -421,13 +432,13 @@ i18next
           },
 
           signInStatus: {
-            success: "Accesso effettuato con successo",
+            success: "Accesso con successo",
             error: "Autenticazione fallita",
             fetchError: "Errore nel recupero dei dati",
           },
 
           signUpStatus: {
-            success: "Registrazione completata con successo",
+            success: "Registrazione successo",
             error: "Registrazione fallita",
           },
 
@@ -438,8 +449,15 @@ i18next
           },
 
           logOutStatus: {
-            success: "Disconnessione effettuata con successo",
+            success: "Disconnessione successo",
           },
+          unauthorized: "Richiesta autenticazione",
+
+          toHome: "Alla home",
+
+          month: "Mese",
+          current: "Attuale",
+          previous: "Precedente",
         },
       },
     },

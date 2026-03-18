@@ -22,6 +22,15 @@
   height: 100%;
 }
 
+.change-avatar {
+  cursor: pointer;
+}
+
+.change-avatar p {
+  color: var(--light-text-color);
+  font-size: 16px;
+}
+
 .preferences,
 .actions,
 .edit-profile {
@@ -61,6 +70,7 @@
   resize: horizontal;
   max-width: min(575px, 100%);
   min-width: min(327px, 100%);
+  font-size: 16px;
 }
 
 .edit-profile button {
@@ -78,6 +88,7 @@
   column-gap: 24px;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 
 #change-profile-photo {

@@ -4,6 +4,7 @@
   border: 1px solid var(--border-color);
   padding: 0.5em;
   color: var(--text-color);
+  font-size: 14px;
 }
 
 .default-input:focus {
@@ -27,4 +28,11 @@
 
 input {
   font-family: inherit;
+}
+
+@supports (hanging-punctuation: first) and (font: -apple-system-body) and
+  (-webkit-appearance: none) {
+  .default-input {
+    font-size: 16px;
+  }
 }

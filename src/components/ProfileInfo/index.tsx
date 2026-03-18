@@ -25,6 +25,7 @@ import DOMPurify from "dompurify";
 import { useTranslation } from "react-i18next";
 import Select from "@mui/material/Select";
 import Image from "next/image";
+import { t } from "i18next";
 
 const ProfileInfo = observer(() => {
   const { t, i18n } = useTranslation();
@@ -94,14 +95,18 @@ const ProfileInfo = observer(() => {
     <form onSubmit={formik.handleSubmit} className="profile-info">
       <section className="edit-profile">
         <h2>{t("editProfile")}</h2>
-        <div>
+        <div className="change-avatar">
           {isLoading ? (
             <ProfilePhotoSkeleton />
           ) : (
             <>
               <label className="profile-photo" htmlFor="change-profile-photo">
                 <Image
-                  src={formik.values.image}
+                  src={
+                    formik.values.image.includes("blob")
+                      ? formik.values.image
+                      : process.env.NEXT_PUBLIC_BASE_PATH + formik.values.image
+                  }
                   alt="profile-image"
                   height={64}
                   width={64}
@@ -129,6 +134,7 @@ const ProfileInfo = observer(() => {
             Icon={PersonIcon}
             value={formik.values.username}
             onChange={formik.handleChange}
+            autoComplete="username"
           />
 
           {formik.errors.username ? (
@@ -154,6 +160,7 @@ const ProfileInfo = observer(() => {
             placeholder={t("changeEmail")}
             Icon={MailIcon}
             value={formik.values.email}
+            autoComplete="email"
             onChange={formik.handleChange}
           />
           {formik.errors.email ? (
@@ -214,11 +221,12 @@ const ProfileInfo = observer(() => {
                 onChange={(e) => i18n.changeLanguage(e.target.value)}
                 size="small"
                 sx={{
-                  border: "1px solid var(--border-color)",
                   color: "var(--text-color)",
                   backgroundColor: "var(--background-main)",
-                  borderRadius: "8px",
                   minWidth: "120px",
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "var(--border-color)",
+                  },
 
                   "& .MuiSelect-icon": {
                     color: "var(--light-text-color)",
@@ -265,7 +273,7 @@ const ProfilePhotoSkeleton = () => {
         sx={{ bgcolor: "var(--border-color)" }}
       />
 
-      <span> Change profile photo</span>
+      <span> {t("changeProfilePhoto")}</span>
     </div>
   );
 };

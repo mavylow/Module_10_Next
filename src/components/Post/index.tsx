@@ -22,7 +22,7 @@ import {
 import ChevronIconExpanded from "@/assets/ChevronIconExpanded";
 import HeartLikeIcon from "@/assets/HeartLikeIcon";
 import HeartDislikeIcon from "@/assets/HeartDislikeIcon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/store";
 import {
   useMutation,
@@ -47,6 +47,7 @@ import {
   WithoutComment,
 } from "@components/Post/index.styled";
 import Image from "next/image";
+import { setModal } from "@/slices/modalSlice";
 
 interface PostProps {
   post: IPost;
@@ -58,6 +59,7 @@ function Post({ post, onLike }: PostProps) {
 
   const { id, authorId, title, content, image, likedByUsers, creationDate } =
     post;
+  const dispatch = useDispatch();
   const date = formattedDate(creationDate);
   const user = useSelector((state: RootState) => state.auth.user);
   const queryClient = useQueryClient();
@@ -89,6 +91,9 @@ function Post({ post, onLike }: PostProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["post"] });
       onLike();
+    },
+    onError: () => {
+      dispatch(setModal({ message: "unauthorized", status: "warning" }));
     },
   });
 
@@ -143,7 +148,7 @@ function Post({ post, onLike }: PostProps) {
         <WithoutComment>
           <PostHeader>
             <PostAvatar
-              src={author?.profileImage}
+              src={process.env.NEXT_PUBLIC_BASE_PATH + author?.profileImage}
               alt={`Profile picture of ${author?.username}`}
               className="post-avatar"
               loading="lazy"
@@ -160,7 +165,11 @@ function Post({ post, onLike }: PostProps) {
           {image && (
             <figure>
               <Image
-                src={image}
+                src={
+                  image.includes("blob")
+                    ? image
+                    : process.env.NEXT_PUBLIC_BASE_PATH + image
+                }
                 alt="post-content image"
                 width={700}
                 height={700}
@@ -192,14 +201,26 @@ function Post({ post, onLike }: PostProps) {
                 />
               )}
 
-              <span>{t("like", { count: likedByUsers.length })}</span>
+              <span
+                onClick={() =>
+                  handleLikeAndDislike(
+                    user && likedByUsers?.some((u) => u.email === user.email)
+                      ? "dislike"
+                      : "like"
+                  )
+                }
+              >
+                {t("like", { count: likedByUsers.length })}
+              </span>
             </Likes>
             <Comments>
               <CommentIcon />
               {user ? (
                 <>
                   {comments ? (
-                    <span>{t("comment", { count: comments.length })}</span>
+                    <span onClick={handleExpand}>
+                      {t("comment", { count: comments.length })}
+                    </span>
                   ) : (
                     <Skeleton variant="text" width={10} />
                   )}
